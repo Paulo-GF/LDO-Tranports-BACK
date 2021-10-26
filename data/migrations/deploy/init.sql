@@ -1,19 +1,21 @@
 -- Deploy ldo:init to pg
 
 BEGIN;
+CREATE DOMAIN mail AS text CHECK(VALUE ~ '^[^@\s]+@[^@\s]+\.[^@\s]+$');
+CREATE DOMAIN pass AS text CHECK(VALUE ~ '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$');
+
 
 CREATE TABLE IF NOT EXISTS "user" (
   "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "role" TEXT NOT NULL,
   "lastname" TEXT UNIQUE NOT NULL,
   "firstname" TEXT UNIQUE NOT NULL,
-  "mail" TEXT UNIQUE NOT NULL,
-  CHECK("mail" ~ '^[^@\s]+@[^@\s]+\.[^@\s]+$')
+  "mail" mail UNIQUE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS "password" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "hash" TEXT UNIQUE NOT NULL,
+    "hash" pass UNIQUE NOT NULL,
     "user_id" INT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE
 );
 CREATE TABLE IF NOT EXISTS "job" (
