@@ -1,0 +1,6 @@
+%syntax-version=1.0.0
+%project=ldo
+
+init 2021-10-26T12:38:18Z Etudiant O'clock <student@teleporter> # initialization of basic structure
+seeding 2021-10-26T13:13:21Z Etudiant O'clock <student@teleporter> # import data to database
+sql_function 2021-10-26T15:02:07Z Etudiant O'clock <student@teleporter> # insert sql functions to pg
