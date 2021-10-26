@@ -24,7 +24,8 @@ CREATE TABLE IF NOT EXISTS "job" (
     "region" TEXT NOT NULL,
     "city" TEXT NOT NULL,
     "type" TEXT NOT NULL,
-    "description" TEXT NOT NULL
+    "description" TEXT NOT NULL,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 CREATE TABLE IF NOT EXISTS "user_job" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
