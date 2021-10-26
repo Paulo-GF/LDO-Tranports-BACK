@@ -1,0 +1,33 @@
+-- Deploy ldo:init to pg
+
+BEGIN;
+
+CREATE TABLE IF NOT EXISTS "user" (
+  "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  "role" TEXT NOT NULL,
+  "lastname" TEXT UNIQUE NOT NULL,
+  "firstname" TEXT UNIQUE NOT NULL,
+  "mail" TEXT UNIQUE NOT NULL,
+  CHECK("mail" ~ '^[^@\s]+@[^@\s]+\.[^@\s]+$')
+);
+
+CREATE TABLE IF NOT EXISTS "password" (
+    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    "hash" TEXT UNIQUE NOT NULL,
+    "user_id" INT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE
+);
+CREATE TABLE IF NOT EXISTS "job" (
+    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    "title" TEXT NOT NULL,
+    "region" TEXT NOT NULL,
+    "city" TEXT NOT NULL,
+    "type" TEXT NOT NULL,
+    "description" TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS "user_job" (
+    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    "user_id" INT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,
+    "job_id" INT NOT NULL REFERENCES "job"(id) ON DELETE CASCADE
+);
+
+COMMIT;

@@ -1,0 +1,10 @@
+DROP DATABASE IF EXISTS ldo;
+DROP ROLE IF EXISTS ldo;
+
+-- user creation
+CREATE ROLE ldo WITH LOGIN ENCRYPTED PASSWORD 'ldo';
+
+-- database creation
+
+CREATE DATABASE ldo WITH OWNER ldo;
+

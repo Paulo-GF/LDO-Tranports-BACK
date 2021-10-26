@@ -1,0 +1,10 @@
+# Initialize environment variables
+export SQITCH_USERNAME=ldo
+export SQITCH_PASSWORD=ldo
+
+# Sqitch verify
+sqitch verify db:pg:ldo
+
+# Disable environment variables
+unset SQITCH_USERNAME
+unset SQITCH_PASSWORD
