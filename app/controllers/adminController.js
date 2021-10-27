@@ -1,4 +1,7 @@
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const userModel = require('../models/user');
+const Password = require('../models/password');
 
 const adminController = {
 
@@ -8,7 +11,7 @@ const adminController = {
      * @param {*} res - send status and json
      * @returns - status 403 if connection isn't allowed
      */
-    adminConnection: async (req, res) => {
+    adminSignin: async function (req, res) {
         const form = req.body;
         const user = await userModel.getUser(form);
         // console.log(form);
@@ -36,7 +39,29 @@ const adminController = {
         });
 
     },
-};
 
+    modifyPassword: async function (req, res) {
+        const form = req.body;
+        // je vais vérifier que le mot de passe entré est le même que le mot de passe de confirmation
+        if (form.password === form.passwordConfirm) {
+            // si ça correspond, je chiffre le mot de passe
+            const salt = bcrypt.genSaltSync(saltRounds);
+            let hash = bcrypt.hashSync(form.password, salt);
+            console.log('hash : ', hash);
+            console.log('#######"');
+
+            //  je mets à jour le mot de passe avec celui hashé
+            form.password = hash;
+        }
+        console.log(form);
+
+        const newPassword = new Password(form);
+        await newPassword.save();
+
+        res.json(newPassword);
+
+        console.log('newPassword :', newPassword);
+    }
+};
 
 module.exports = adminController;

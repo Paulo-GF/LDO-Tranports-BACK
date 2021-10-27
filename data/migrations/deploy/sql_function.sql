@@ -11,7 +11,7 @@ INSERT INTO "job"
         region,
         city,
         type,
-        description,
+        description
     )
     VALUES
     (

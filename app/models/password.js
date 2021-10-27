@@ -1,21 +1,21 @@
-// const pool = require('../database');
+const pool = require('../database');
 
-// class Password {
+class Password {
 
-//     constructor(object){
-//         //this.user_id = object.user_id;
-//         this.hash = object.hash;
-//     }
+    constructor(form){
+        this.user_id = form.userId;
+        this.hash = form.password;
+    }
 
-//     // Get user_id and hash
-//     static async getPasswordById(userId){
-//         const query = {
-//             text: "SELECT hash, user_id FROM password WHERE user_id=$1",
-//             values:[userId]
-//         }
-//         const result = await pool.query(query);
-//         return new Password(result.rows[0]);
-//     }
-// };
+    // Get user_id and hash
+    async save(){
+        const query = {
+            text: `UPDATE "password" SET hash=$1 WHERE user_id=$2`,
+            values:[this.hash, this.user_id]
+        }
+        const { rows } = await pool.query(query);
+        return rows[0];
+    }
+};
 
-// module.exports = Password;
+module.exports = Password;
