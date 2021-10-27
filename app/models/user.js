@@ -26,7 +26,7 @@ class User {
      */
     static async getUser(form){
         const query = {
-            text: `SELECT "user".id, role, firstname, mail, hash
+            text: `SELECT "user".id, role, firstname, lastname, mail, hash
                     FROM "user"
                     JOIN password ON user_id = "user".id
                     WHERE mail=$1 AND hash=$2;`,
@@ -35,7 +35,7 @@ class User {
         };
 
         const {rows} = await pool.query(query);
-        console.log(rows[0]);
+        //console.log(rows[0]);
         return rows[0];
     }
 };

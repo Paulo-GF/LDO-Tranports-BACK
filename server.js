@@ -11,7 +11,20 @@ app.use(express.json());
 
 app.use(express.urlencoded({extended:true}));
 
+/* Manage session */
+const session = require("express-session");
+app.use(session({
+    secret:process.env.SECRET,
+    resave:true,
+    saveUninitialized:true,
+    cookie: {
+        secure: false,
+        maxAge: (1000*60*60) // this make one hour
+      }
+}));
+
 app.use(router);
+
 
 app.listen(PORT,()=>{
     console.log(`Listening on http://localhost:${PORT}`);

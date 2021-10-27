@@ -18,6 +18,16 @@ const adminController = {
             return res.status(403).json(`Accès refusé, le mail ${form.mail} ou le mot de passe ${form.password} ne sont pas autorisés`);
         }
 
+        // Save user informations in session
+        req.session.user = {
+            role: user.role,
+            email: user.mail,
+            firstname: user.firstname,
+            lastname: user.lastname
+        };
+
+        console.log(req.session.user);
+
         res.status(200);
         res.json({
             message: `Connection de l'utilisateur ${user.firstname} : établie !`,

@@ -1,4 +1,4 @@
-### Connection route - Admin
+### Connection route - test mail error
 POST http://localhost:5050/admin-signin
 Content-Type: application/json
 
@@ -7,16 +7,16 @@ Content-Type: application/json
     "password": "Jesuis-benoit31"
 }
 
-###
+### Connection route - test password error
 POST http://localhost:5050/admin-signin
 Content-Type: application/json
 
 {
     "mail": "benoit.doe@gmail.com",
-    "password": "Jesuis-benoit31"
+    "password": "Jesuis-toto11"
 }
 
-###
+### Connection route - test OK
 POST http://localhost:5050/admin-signin
 Content-Type: application/json
 
