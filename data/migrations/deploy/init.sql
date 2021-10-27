@@ -2,7 +2,7 @@
 
 BEGIN;
 CREATE DOMAIN mail AS text CHECK(VALUE ~ '^[^@\s]+@[^@\s]+\.[^@\s]+$');
-CREATE DOMAIN pass AS text CHECK(VALUE ~ '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$');
+--CREATE DOMAIN pass AS text CHECK(VALUE ~ '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$');
 
 
 CREATE TABLE IF NOT EXISTS "user" (
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS "user" (
 
 CREATE TABLE IF NOT EXISTS "password" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "hash" pass UNIQUE NOT NULL,
+    "hash" text UNIQUE NOT NULL,
     "user_id" INT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE
 );
 CREATE TABLE IF NOT EXISTS "job" (
