@@ -5,7 +5,7 @@ const adminController = {
     /**
      * Checking if connection is allowed for admin
      * @param {json} req - retrieve the body
-     * @param {*} res - retrieve status and json
+     * @param {*} res - send status and json
      * @returns - status 403 if connection isn't allowed
      */
     adminConnection: async (req, res) => {
