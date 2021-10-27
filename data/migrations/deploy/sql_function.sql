@@ -12,7 +12,6 @@ INSERT INTO "job"
         city,
         type,
         description,
-        created_at
     )
     VALUES
     (
@@ -20,8 +19,7 @@ INSERT INTO "job"
         jobInput->>'event_id',
         jobInput->>'city',
         jobInput->>'type',
-        jobInput->>'description',
-        (jobInput->>'created_at')::timestamptz
+        jobInput->>'description'
     )
     RETURNING *;
 $$ LANGUAGE SQL;
@@ -35,8 +33,7 @@ CREATE FUNCTION "edit_job"(jobInput json) RETURNS job AS $$
         region = jobInput->>'region',
         city = jobInput->>'city',
         type = jobInput->>'type',
-        description = jobInput->>'description',
-        created_at = (jobInput->>'created_at')::timestamptz
+        description = jobInput->>'description'
     WHERE
         id = (jobInput->>'id')::int
     RETURNING *;
