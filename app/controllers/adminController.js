@@ -17,20 +17,10 @@ const adminController = {
         const user = await userModel.getUser(form);
         // console.log(form);
         // console.log(user);
-        if (user === undefined) {
-            // Send a new error 403 - forbidden
-            
-             res.status(403);
-             res.json(`Accès refusé, le mail ${form.mail} ou le mot de passe ${form.password} ne sont pas autorisés`);
-        }
 
-        if (user) {
-
-            if(!(bcrypt.compareSync(form.password, user.hash))){
-             res.status(403);
-             res.json(`Accès refusé, le mail ${form.mail} ou le mot de passe ${form.password} ne sont pas autorisés`);
-            }
-
+        // If mail is allow, check password hash and form password
+        if (user !== undefined) {
+            // check password between form and db hash
             if (bcrypt.compareSync(form.password, user.hash)) {
 
                 // Save user informations in session
@@ -52,6 +42,18 @@ const adminController = {
                 });
 
             }
+            // If mail is ok but password isn't ok : send error 403 - forbidden
+            else {
+                res.status(403);
+                res.json(`Accès refusé, le mot de passe ${form.password} n'est pas autorisé`);
+            }
+        }
+        // If mail is not allowed
+        if (!user) {
+            // Send a new error 403 - forbidden
+            res.status(403);
+            res.json(`Accès refusé, le mail ${form.mail} ou le mot de passe ${form.password} ne sont pas autorisés`);
+
         }
 
     },
