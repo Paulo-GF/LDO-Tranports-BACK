@@ -8,7 +8,12 @@ const router = require('./app/router');
 
 const PORT = process.env.PORT || 3500;
 
-app.use(cors());
+const corsOptions ={
+    origin:'http://localhost:8080',
+    credentials:true,
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
@@ -29,7 +34,7 @@ app.use(session({
 // cors
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     // response to preflight request
     if (req.method === 'OPTIONS') {
