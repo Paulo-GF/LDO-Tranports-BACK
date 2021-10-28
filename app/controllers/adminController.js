@@ -66,13 +66,6 @@ const adminController = {
         res.json(newPass);
 
         console.log('newPassword :', newPass);
-    },
-
-    getAllUsers: async function (res, req) {
-
-        const user = await userModel.getAllUser();
-
-        res.json(user);
     }
 };
 
