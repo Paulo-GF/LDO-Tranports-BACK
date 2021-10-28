@@ -8,7 +8,7 @@ const router = require('./app/router');
 
 const PORT = process.env.PORT || 3500;
 
-app.use(cors('*'));
+app.use(cors());
 
 app.use(express.json());
 
