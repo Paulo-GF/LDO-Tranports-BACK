@@ -17,9 +17,11 @@ const adminController = {
         const user = await userModel.getUser(form);
         // console.log(form);
         // console.log(user);
-        if (user === undefined) {
+        if (user == undefined) {
             // Send a new error 403 - forbidden
-            return res.status(403).json(`Accès refusé, le mail ${form.mail} ou le mot de passe ${form.password} ne sont pas autorisés`);
+            
+             res.status(403);
+             res.json(`Accès refusé, le mail ${form.mail} ou le mot de passe ${form.password} ne sont pas autorisés`);
         }
 
         if (user) {

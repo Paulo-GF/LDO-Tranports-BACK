@@ -22,7 +22,7 @@ Content-Type: application/json
 
 {
     "mail": "benoit.doe@gmail.com",
-    "password": "Jesuis-benoit36"
+    "password": "Jesuis-benoit37"
 }
 
 ### Route : Modify password
@@ -31,6 +31,6 @@ Content-Type: application/json
 
 {
     "userId" : 1,
-    "password": "Jesuis-benoit36",
-    "passwordConfirm": "Jesuis-benoit36"
+    "newPassword": "Jesuis-benoit37",
+    "newPasswordConfirm": "Jesuis-benoit37"
 }
