@@ -9,4 +9,8 @@ const adminMiddleware = require('./middleware/adminMiddleware');
 router.post('/admin-signin', adminController.adminSignin);
 router.post('/admin-logged/:adminId', adminMiddleware.isAdmin, adminController.modifyPassword);
 
+router.get('/recrutement', (req, res) =>{
+    res.json('coucou')
+})
+
 module.exports = router;
