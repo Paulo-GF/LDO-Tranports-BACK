@@ -10,7 +10,7 @@ router.post('/admin-signin', adminController.adminSignin);
 router.post('/admin-logged/:adminId', adminMiddleware.isAdmin, adminController.modifyPassword);
 
 router.get('/recrutement', (req, res) =>{
-    res.json('coucou')
-})
+    res.json({message: 'ça marche youpi', toto:'tata'})
+});
 
 module.exports = router;
