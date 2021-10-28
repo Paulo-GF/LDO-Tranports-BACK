@@ -47,15 +47,15 @@ const adminController = {
 
     modifyPassword: async function (req, res) {
         const form = req.body;
-        // je vais vérifier que le mot de passe entré est le même que le mot de passe de confirmation
+        // Virify both passwords from front body
         if (form.newPassword === form.newPasswordConfirm) {
-            // si ça correspond, je chiffre le mot de passe
+            // If is ok, "newPassword" is encrypted
             const salt = bcrypt.genSaltSync(saltRounds);
             let hash = bcrypt.hashSync(form.newPassword, salt);
             console.log('hash : ', hash);
             console.log('#######"');
 
-            //  je mets à jour le mot de passe avec celui hashé
+            //  Update "newPassword" from the front body with new encrypted password
             form.newPassword = hash;
         }
         console.log(form);
