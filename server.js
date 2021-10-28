@@ -13,7 +13,7 @@ app.use(cors({origin: '*'}));
 
 app.use(express.json());
 
-app.use(express.urlencoded({ extended: true }));
+//app.use(express.urlencoded({ extended: true }));
 
 /* Manage session */
 const session = require("express-session");
