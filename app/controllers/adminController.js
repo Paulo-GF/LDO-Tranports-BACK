@@ -18,41 +18,28 @@ const adminController = {
         console.log(form);
         console.log(user);
 
-        // If mail is allow, check password hash and form password
-        if (user !== undefined) {
-            // check password between form and db hash
-            if (bcrypt.compareSync(form.password, user.hash)) {
-
-                // // Save user informations in session
-                // req.session.user = {
-                //     role: user.role,
-                //     mail: user.mail,
-                //     firstname: user.firstname,
-                //     lastname: user.lastname
-                // };
-
-                //console.log(req.session.user);
-
-                
-                res.json({
-                    message: `Connection de l'utilisateur ${user.firstname} : établie !`,
-                    userId: user.id,
-                    userFirstName: user.firstname,
-                    role: user.role
-                });
-
-            }
-            // If mail is ok but password isn't ok : send error 403 - forbidden
-            else {
-                res.json(`Accès refusé, le mot de passe ${form.password} ${user.firstname} n'est pas autorisé`);
-            }
-        }
         // If mail is not allowed
         if (!user) {
             // Send a new error 403 - forbidden
-            res.json(`Accès refusé, le mail ${form.mail} n'est pas autorisé`);
+            return res.json(`Accès refusé, le mail ${form.mail} n'est pas autorisé`);
 
         }
+        // If mail is allowed, check password hash and form password
+        if (user !== undefined && !bcrypt.compareSync(form.password, user.hash)) {
+            // If mail is ok but password isn't ok : send error 403 - forbidden
+            return res.json(`Accès refusé, le mot de passe ${form.password} n'est pas autorisé`);
+
+        }
+
+        // password is ok and mail is ok
+        res.json({
+            message: `Connection de l'utilisateur ${user.firstname} : établie !`,
+            userId: user.id,
+            userFirstName: user.firstname,
+            role: user.role
+        });
+
+
 
     },
 
