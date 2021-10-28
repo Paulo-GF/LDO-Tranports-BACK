@@ -8,7 +8,7 @@ VALUES
 INSERT INTO
   public.password(hash, user_id)
 VALUES
-  ('Jesuis-benoit31', 1);
+  ('$2b$10$jxvbaYnHr6qd9nsKS6XAXOSCatNt8jDDDNLMVhDfbZIoKpILHa/ku', 1);
 
 INSERT INTO
   public.job(title, region, city, type, description)
