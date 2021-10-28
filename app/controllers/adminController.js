@@ -26,15 +26,15 @@ const adminController = {
 
             if (bcrypt.compareSync(form.password, user.hash)) {
 
-                // // Save user informations in session
-                // req.session.user = {
-                //     role: user.role,
-                //     mail: user.mail,
-                //     firstname: user.firstname,
-                //     lastname: user.lastname
-                // };
+                // Save user informations in session
+                req.session.user = {
+                    role: user.role,
+                    mail: user.mail,
+                    firstname: user.firstname,
+                    lastname: user.lastname
+                };
 
-                // console.log(req.session.user);
+                console.log(req.session.user);
 
                 res.status(200);
                 res.json({
