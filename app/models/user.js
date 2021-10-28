@@ -29,9 +29,9 @@ class User {
             text: `SELECT "user".id, role, firstname, lastname, mail, hash
                     FROM "user"
                     JOIN password ON user_id = "user".id
-                    WHERE mail=$1 AND hash=$2;`,
+                    WHERE mail=$1;`,
 
-            values: [form.mail, form.password]
+            values: [form.mail]
         };
 
         const {rows} = await pool.query(query);

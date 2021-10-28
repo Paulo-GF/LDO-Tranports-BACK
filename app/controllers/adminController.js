@@ -21,22 +21,30 @@ const adminController = {
             return res.status(403).json(`Accès refusé, le mail ${form.mail} ou le mot de passe ${form.password} ne sont pas autorisés`);
         }
 
-        // Save user informations in session
-        req.session.user = {
-            role: user.role,
-            email: user.mail,
-            firstname: user.firstname,
-            lastname: user.lastname
-        };
+        if (user) {
 
-        console.log(req.session.user);
+            if (bcrypt.compareSync(form.password, user.hash)) {
 
-        res.status(200);
-        res.json({
-            message: `Connection de l'utilisateur ${user.firstname} : établie !`,
-            userId: user.id,
-            userFirstName: user.firstname
-        });
+                // Save user informations in session
+                req.session.user = {
+                    role: user.role,
+                    mail: user.mail,
+                    firstname: user.firstname,
+                    lastname: user.lastname
+                };
+
+                console.log(req.session.user);
+
+                res.status(200);
+                res.json({
+                    message: `Connection de l'utilisateur ${user.firstname} : établie !`,
+                    userId: user.id,
+                    userFirstName: user.firstname,
+                    role : user.role
+                });
+
+            }
+        }
 
     },
 
