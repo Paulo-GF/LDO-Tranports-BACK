@@ -51,24 +51,24 @@ const adminController = {
     modifyPassword: async function (req, res) {
         const form = req.body;
         // je vais vérifier que le mot de passe entré est le même que le mot de passe de confirmation
-        if (form.password === form.passwordConfirm) {
+        if (form.newPassword === form.newPasswordConfirm) {
             // si ça correspond, je chiffre le mot de passe
             const salt = bcrypt.genSaltSync(saltRounds);
-            let hash = bcrypt.hashSync(form.password, salt);
+            let hash = bcrypt.hashSync(form.newPassword, salt);
             console.log('hash : ', hash);
             console.log('#######"');
 
             //  je mets à jour le mot de passe avec celui hashé
-            form.password = hash;
+            form.newPassword = hash;
         }
         console.log(form);
 
-        const newPassword = new Password(form);
-        await newPassword.save();
+        const newPass = new Password(form);
+        await newPass.save();
 
-        res.json(newPassword);
+        res.json(newPass);
 
-        console.log('newPassword :', newPassword);
+        console.log('newPassword :', newPass);
     }
 };
 

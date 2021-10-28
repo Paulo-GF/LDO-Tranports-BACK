@@ -4,7 +4,7 @@ class Password {
 
     constructor(form){
         this.user_id = form.userId;
-        this.hash = form.password;
+        this.hash = form.newPassword;
     }
 
     // Get user_id and hash
