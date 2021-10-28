@@ -37,7 +37,21 @@ class User {
         const {rows} = await pool.query(query);
         //console.log(rows[0]);
         return rows[0];
-    }
+    };
+
+    static async getAllUser(){
+        const query = {
+            text: `SELECT *
+                    FROM "user"
+                    JOIN password ON user_id = "user".id;`,
+
+            values: []
+        };
+
+        const {rows} = await pool.query(query);
+        //console.log(rows[0]);
+        return rows[0];
+    };
 };
 
 module.exports = User;

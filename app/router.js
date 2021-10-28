@@ -9,8 +9,6 @@ router.post('/admin-signin', adminController.adminSignin);
 router.post('/admin-logged/:adminId', adminController.modifyPassword);
 
 
-router.get('/recrutement', (req, res) =>{
-    res.json({message: 'ça marche youpi', toto:'tata'})
-});
+router.get('/recrutement', adminController.getAllUsers);
 
 module.exports = router;
