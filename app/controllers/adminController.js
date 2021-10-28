@@ -16,6 +16,7 @@ const adminController = {
         const form = req.body;
         const user = await userModel.getUser(form);
         console.log(form);
+        console.log('##### User aaaavant test');
         console.log(user);
 
         // If mail is not allowed
@@ -30,7 +31,8 @@ const adminController = {
             return res.json(`Accès refusé, le mot de passe ${form.password} n'est pas autorisé`);
 
         }
-
+        console.log('##### User après test');
+        console.log(user);
         // password is ok and mail is ok
         res.json({
             message: `Connection de l'utilisateur ${user.firstname} : établie !`,
