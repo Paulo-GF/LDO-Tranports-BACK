@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
     "mail": "toto@gmail.com",
-    "password": "Jesuis-benoit31"
+    "password": "Jesuis-benoit35"
 }
 
 ### Connection route - test password error
@@ -22,7 +22,7 @@ Content-Type: application/json
 
 {
     "mail": "benoit.doe@gmail.com",
-    "password": "Jesuis-benoit32"
+    "password": "Jesuis-benoit36"
 }
 
 ### Route : Modify password
@@ -31,6 +31,6 @@ Content-Type: application/json
 
 {
     "userId" : 1,
-    "password": "Jesuis-benoit32",
-    "passwordConfirm": "Jesuis-benoit32"
+    "password": "Jesuis-benoit36",
+    "passwordConfirm": "Jesuis-benoit36"
 }
