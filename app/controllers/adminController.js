@@ -15,8 +15,8 @@ const adminController = {
 
         const form = req.body;
         const user = await userModel.getUser(form);
-        // console.log(form);
-        // console.log(user);
+        console.log(form);
+        console.log(user);
 
         // If mail is allow, check password hash and form password
         if (user !== undefined) {
@@ -44,7 +44,7 @@ const adminController = {
             }
             // If mail is ok but password isn't ok : send error 403 - forbidden
             else {
-                res.json(`Accès refusé, le mot de passe ${form.password} n'est pas autorisé`);
+                res.json(`Accès refusé, le mot de passe ${form.password} ${user} n'est pas autorisé`);
             }
         }
         // If mail is not allowed
