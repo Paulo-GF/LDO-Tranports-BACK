@@ -33,7 +33,7 @@ const adminController = {
 
                 console.log(req.session.user);
 
-                res.status(200);
+                
                 res.json({
                     message: `Connection de l'utilisateur ${user.firstname} : établie !`,
                     userId: user.id,
@@ -44,15 +44,13 @@ const adminController = {
             }
             // If mail is ok but password isn't ok : send error 403 - forbidden
             else {
-                res.status(403);
-                res.json(`Accès refusé, le mot de passe ${form.password} n'est pas autorisé`);
+                res.status(403).json(`Accès refusé, le mot de passe ${form.password} n'est pas autorisé`);
             }
         }
         // If mail is not allowed
         if (!user) {
             // Send a new error 403 - forbidden
-            res.status(403);
-            res.json(`Accès refusé, le mail ${form.mail} ou le mot de passe ${form.password} ne sont pas autorisés`);
+            res.status(403).json(`Accès refusé, le mail ${form.mail} n'est pas autorisé`);
 
         }
 
