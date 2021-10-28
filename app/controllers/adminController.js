@@ -12,6 +12,7 @@ const adminController = {
      * @returns - status 403 if connection isn't allowed
      */
     adminSignin: async function (req, res) {
+
         const form = req.body;
         const user = await userModel.getUser(form);
         // console.log(form);
@@ -40,7 +41,7 @@ const adminController = {
                     message: `Connection de l'utilisateur ${user.firstname} : établie !`,
                     userId: user.id,
                     userFirstName: user.firstname,
-                    role : user.role
+                    role: user.role
                 });
 
             }
