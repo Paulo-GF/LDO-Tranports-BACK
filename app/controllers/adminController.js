@@ -44,7 +44,7 @@ const adminController = {
             }
             // If mail is ok but password isn't ok : send error 403 - forbidden
             else {
-                res.json(`Accès refusé, le mot de passe ${form.password} ${user} n'est pas autorisé`);
+                res.json(`Accès refusé, le mot de passe ${form.password} ${user.firstname} n'est pas autorisé`);
             }
         }
         // If mail is not allowed
