@@ -23,15 +23,15 @@ const adminController = {
             // check password between form and db hash
             if (bcrypt.compareSync(form.password, user.hash)) {
 
-                // Save user informations in session
-                req.session.user = {
-                    role: user.role,
-                    mail: user.mail,
-                    firstname: user.firstname,
-                    lastname: user.lastname
-                };
+                // // Save user informations in session
+                // req.session.user = {
+                //     role: user.role,
+                //     mail: user.mail,
+                //     firstname: user.firstname,
+                //     lastname: user.lastname
+                // };
 
-                console.log(req.session.user);
+                //console.log(req.session.user);
 
                 
                 res.json({
@@ -44,13 +44,13 @@ const adminController = {
             }
             // If mail is ok but password isn't ok : send error 403 - forbidden
             else {
-                res.status(403).json(`Accès refusé, le mot de passe ${form.password} n'est pas autorisé`);
+                res.json(`Accès refusé, le mot de passe ${form.password} n'est pas autorisé`);
             }
         }
         // If mail is not allowed
         if (!user) {
             // Send a new error 403 - forbidden
-            res.status(403).json(`Accès refusé, le mail ${form.mail} n'est pas autorisé`);
+            res.json(`Accès refusé, le mail ${form.mail} n'est pas autorisé`);
 
         }
 
