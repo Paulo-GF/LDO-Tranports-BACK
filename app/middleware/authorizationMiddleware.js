@@ -7,7 +7,7 @@ const authorization = (req, res, next) => {
         token = req.headers.authorization.split(' ')[1];
        }
     if (!token) {
-      return res.sendStatus(403);
+      return res.sendStatus(403).json({message : token, message2: "ahaha pas de token !"});
     }
     try {
       const data = jsonwebtoken.verify(token, jwtSecret);
