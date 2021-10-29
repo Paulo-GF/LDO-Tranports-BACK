@@ -12,7 +12,11 @@ const PORT = process.env.PORT || 3500;
 
 //app.use(cookieParser())
 
-app.use(cors({ origin: '*' }));
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -32,6 +36,8 @@ app.use(jwt({ secret: jwtSecret, algorithms: ['HS256'] }));
 //     getToken: req => req.cookies.token
 //   })
 // );
+
+
 /* Serveur connection */
 app.listen(PORT, () => {
     console.log(`Listening on http://localhost:${PORT}`);
