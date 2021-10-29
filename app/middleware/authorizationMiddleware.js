@@ -9,7 +9,6 @@ const authorization = (req, res, next) => {
         if (req.headers.Authorization && req.headers.Authorization.split(' ')[0] === 'Bearer') {
             token = req.headers.Authorization.split(' ')[1];
             console.log(token);
-            return token;
         }
 
         // if (!token) {
