@@ -13,6 +13,7 @@ const authorization = (req, res, next) => {
             if (err) {
                 return res.status(401).json('token_not_valid');
             } else {
+                console.log(decoded);
                 req.decoded = decoded;
                 next();
             }
