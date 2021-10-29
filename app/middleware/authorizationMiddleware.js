@@ -13,12 +13,17 @@ const authorization = (req, res, next) => {
         return res.status(403).json({ message: token, message2: "ahaha pas de token !" });
     }
 
-    const data = jsonwebtoken.verify(token, jwtSecret);
-    console.log(data);
-    req.userId = data.userId;
-    req.userMail = data.userMail;
-    req.userRole = data.userRole;
-    
+    try {
+        const data = jsonwebtoken.verify(token, jwtSecret);
+        console.log(data);
+        req.userId = data.userId;
+        req.userMail = data.userMail;
+        req.userRole = data.userRole;
+        
+    } catch (error) {
+        return res.status(403).json({ message: token, message2: "on est dans le catch"});
+    }
+
     next();
 
 };
