@@ -9,9 +9,9 @@ const authorization = (req, res, next) => {
     }
 
     if (token) {
-        jsonwebtoken.verify(token, jwtSecret, (err, decoded) => {
-            if (err) {
-                return res.status(401).json('token_not_valid');
+        jsonwebtoken.verify(token, jwtSecret, (error, decoded) => {
+            if (error) {
+                return res.status(401).json(error.toString() + " Le Token n'est pas valide");
             } else {
                 console.log(decoded);
                 req.decoded = decoded;
@@ -19,7 +19,7 @@ const authorization = (req, res, next) => {
             }
         });
     } else {
-        return res.status(401).json('token_required');
+        return res.status(401).json(error.toString() + " Le Token est requis");
     }
 
 };
