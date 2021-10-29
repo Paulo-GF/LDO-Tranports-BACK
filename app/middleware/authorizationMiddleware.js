@@ -5,10 +5,15 @@ const jwtSecret = process.env.JWT_SECRET;
 const authorization = (req, res, next) => {
     try {
 
-        let token;
+        
         if (req.headers.Authorization && req.headers.Authorization.split(' ')[0] === 'Bearer') {
-            token = req.headers.Authorization.split(' ')[1];
+            let token = req.headers.Authorization.split(' ')[1];
             console.log(token);
+            const data = jsonwebtoken.verify(token, process.env.JWT_SECRET);
+            console.log(data);
+            req.userId = data.userId;
+            req.userMail = data.userMail;
+            req.userRole = data.userRole;
         }
 
         // if (!token) {
@@ -16,11 +21,6 @@ const authorization = (req, res, next) => {
         // } 
 
         
-            const data = jsonwebtoken.verify(token, process.env.JWT_SECRET);
-            console.log(data);
-            req.userId = data.userId;
-            req.userMail = data.userMail;
-            req.userRole = data.userRole;
         
         
     } catch (error) {
