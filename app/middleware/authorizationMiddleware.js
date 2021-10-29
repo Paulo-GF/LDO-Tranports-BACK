@@ -14,18 +14,29 @@ const authorization = (req, res, next) => {
                 return res.status(403).json({ message: token, message2: "ahaha pas de token !" });
             } 
 
-            const data = jsonwebtoken.verify(token, process.env.JWT_SECRET);
-            console.log(data);
-            req.userId = data.userId;
-            req.userMail = data.userMail;
-            req.userRole = data.userRole;
+            // const data = jsonwebtoken.verify(token, process.env.JWT_SECRET);
+            // console.log(data);
+            // req.userId = data.userId;
+            // req.userMail = data.userMail;
+            // req.userRole = data.userRole;
+            jsonwebtoken.verify(token, jwtSecret, (err, user) => {
+                console.log(user);
+                if (err) {
+                    return res.sendStatus(401);
+                }
+                req.user = user;
+                next();
+            });
         }
         
     } catch (error) {
         res.status(403).json({ message: token, message2: "on est dans le catch" });
     }
     
-    next();
+    //next();
+
+    
+
 
 };
 
