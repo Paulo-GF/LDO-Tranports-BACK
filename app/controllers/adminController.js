@@ -23,13 +23,13 @@ const adminController = {
         // If mail is not allowed
         if (!user) {
             // Send a new error 403 - forbidden
-            return res.json(`Accès refusé, le mail ${form.mail} n'est pas autorisé`);
+            return res.status(403).json(`Accès refusé, le mail ${form.mail} n'est pas autorisé`);
 
         }
         // If mail is allowed, check password hash and form password
         if (user !== undefined && !bcrypt.compareSync(form.password, user.hash)) {
             // If mail is ok but password isn't ok : send error 403 - forbidden
-            return res.json(`Accès refusé, le mot de passe ${form.password} n'est pas autorisé`);
+            return res.status(403).json(`Accès refusé, le mot de passe ${form.password} n'est pas autorisé`);
 
         }
 
