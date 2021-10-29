@@ -9,7 +9,7 @@ const authorizationMiddleware = require('./middleware/authorizationMiddleware')
 router.post('/admin-signin', adminController.adminSignin);
 router.post('/admin-logged/:adminId', authorizationMiddleware, adminController.modifyPassword);
 
-router.get('/recrutement', authorizationMiddleware, (req, res) => {
+router.get('/recrutement', (req, res) => {
 res.json({message : "ok on a le token !"})
 });
 
