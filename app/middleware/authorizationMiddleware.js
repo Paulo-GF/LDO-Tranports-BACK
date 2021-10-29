@@ -16,7 +16,7 @@ const authorization = (req, res, next) => {
       req.userRole = data.userRole;
       return next();
     } catch {
-      return res.sendStatus(403);
+      return res.sendStatus(403).json({message : token});
     }
   };
 
