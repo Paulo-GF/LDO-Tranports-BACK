@@ -13,18 +13,24 @@ const authorization = (req, res, next) => {
         return;
     }
 
-    try {
-        const data = jsonwebtoken.verify(token, process.env.JWT_SECRET);
-        console.log(data);
+    //try {
+        //const data = jsonwebtoken.verify(token, process.env.JWT_SECRET);
+        //console.log(data);
         // req.userId = data.userId;
         // req.userMail = data.userMail;
         // req.userRole = data.userRole;
         
-    } catch (error) {
-        res.status(403).json({ message: token, message2: "on est dans le catch"});
-    }
-
-    next();
+    //} catch (error) {
+        //res.status(403).json({ message: token, message2: "on est dans le catch"});
+    //}
+    jsonwebtoken.verify(token, jwtSecret, (err, user) => {
+        if (err) {
+            return res.sendStatus(401);
+        }
+        req.user = user;
+        next();
+    });
+    
 
 };
 
