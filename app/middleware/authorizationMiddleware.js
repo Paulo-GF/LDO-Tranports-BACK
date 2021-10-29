@@ -10,7 +10,8 @@ const authorization = (req, res, next) => {
     }
 
     if (!token) {
-        return res.status(403).json({ message: token, message2: "ahaha pas de token !" });
+        res.status(403).json({ message: token, message2: "ahaha pas de token !" });
+        return;
     }
 
     try {
@@ -21,7 +22,7 @@ const authorization = (req, res, next) => {
         req.userRole = data.userRole;
         
     } catch (error) {
-        return res.status(403).json({ message: token, message2: "on est dans le catch"});
+        res.status(403).json({ message: token, message2: "on est dans le catch"});
     }
 
     next();
