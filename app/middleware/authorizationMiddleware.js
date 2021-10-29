@@ -11,7 +11,7 @@ const authorization = (req, res, next) => {
     if (token) {
         jsonwebtoken.verify(token, jwtSecret, (error, decoded) => {
             if (error) {
-                return res.status(401).send("Le Token n'est pas valide");
+                return res.status(401).json("Le Token n'est pas valide");
             } else {
                 console.log(decoded);
                 req.decoded = decoded;
@@ -19,7 +19,7 @@ const authorization = (req, res, next) => {
             }
         });
     } else {
-        return res.status(401).send("Le Token est requis");
+        return res.status(401).json("Le Token est requis");
     }
 
 };
