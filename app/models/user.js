@@ -13,11 +13,6 @@ const pool = require('../database');
 
 class User {
 
-    // constructor(userJson){
-    //     for (const props in userJson){
-    //         this[props] = userJson[props];
-    //     }
-    // }
 
     /**
      * Get all user informations for checking admin connection
