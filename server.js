@@ -30,13 +30,12 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
-/* JSON WEB TOKEN */
 const jwtSecret = process.env.JWT_SECRET;
 
 /* Router */
 app.use(router);
 
+/* JSON WEB TOKEN */
 app.use(jwt({ secret: jwtSecret, algorithms: ['HS256'] }));
 // app.use(
 //   jwt({

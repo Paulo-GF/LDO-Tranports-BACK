@@ -1,8 +1,6 @@
 // Middleware for check token from front app
 const jsonwebtoken = require('jsonwebtoken');
 
-//const jwtSecret = process.env.JWT_SECRET;
-
 const authorization = (req, res, next) => {
     // Retrieve token from headers
     let token = req.headers['x-access-token'] || req.headers['authorization'];

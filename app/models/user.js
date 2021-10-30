@@ -19,14 +19,14 @@ class User {
      * @param {form} retrieve req.body from adminController 
      * @returns - A new instance of User with db informations
      */
-    static async getUser(form){
+    static async getUser(mail){
         const query = {
             text: `SELECT "user".id, role, firstname, lastname, mail, hash
                     FROM "user"
                     JOIN password ON user_id = "user".id
                     WHERE mail=$1;`,
 
-            values: [form.mail]
+            values: [mail]
         };
 
         const {rows} = await pool.query(query);
