@@ -16,10 +16,7 @@ const adminController = {
 
         const form = req.body;
         const user = await userModel.getUser(form);
-        // console.log(form);
-        // console.log('##### User avant test');
-        // console.log(user);
-
+        
         // If mail is not allowed
         if (!user) {
             // Send a new error 403 - forbidden
