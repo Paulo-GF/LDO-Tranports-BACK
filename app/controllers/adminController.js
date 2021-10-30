@@ -47,27 +47,25 @@ const adminController = {
             role: user.role,
             access_token: token
         });
-
-
-
     },
 
     modifyPassword: async function (req, res) {
-        const form = req.body;
+        const { userId, newPassword, newPasswordConfirm } = req.body;
         // Virify both passwords from front body
-        if (form.newPassword === form.newPasswordConfirm) {
+        if (newPassword === newPasswordConfirm) {
             // If is ok, "newPassword" is encrypted
             const salt = bcrypt.genSaltSync(saltRounds);
-            let hash = bcrypt.hashSync(form.newPassword, salt);
+            let hash = bcrypt.hashSync(newPassword, salt);
             console.log('hash : ', hash);
             console.log('#######"');
 
             //  Update "newPassword" from the front body with new encrypted password
-            form.newPassword = hash;
+            newPassword = hash;
         }
-        console.log(form);
+        console.log(newPassword, newPasswordConfirm);
 
-        const newPass = new Password(form);
+        // Sending information to the model Password, to update db
+        const newPass = new Password(userId, newPassword);
         await newPass.save();
 
         res.json(newPass);

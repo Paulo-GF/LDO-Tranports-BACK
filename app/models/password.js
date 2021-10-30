@@ -2,9 +2,9 @@ const pool = require('../database');
 
 class Password {
 
-    constructor(form){
-        this.user_id = form.userId;
-        this.hash = form.newPassword;
+    constructor(userId, newPassword){
+        this.user_id = userId;
+        this.hash = newPassword;
     }
 
     // Get user_id and hash
