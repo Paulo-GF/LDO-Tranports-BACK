@@ -67,7 +67,7 @@ const adminController = {
      * @param {JSON} res - Send back JSON
      */
     modifyPassword: async function (req, res) {
-        const { userId, newPassword, newPasswordConfirm } = req.body;
+        let { userId, newPassword, newPasswordConfirm } = req.body;
         // Virify both passwords from front body
         if (newPassword === newPasswordConfirm) {
             // If is ok, "newPassword" is encrypted
@@ -87,7 +87,7 @@ const adminController = {
 
         res.json(newPass);
 
-        //console.log('newPassword :', newPass);
+        //console.log('newPassword :', newPass);x
     }
 };
 
