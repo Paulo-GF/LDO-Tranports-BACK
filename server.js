@@ -1,5 +1,5 @@
 require('dotenv').config();
-const jwt = require('express-jwt');
+//const jwt = require('express-jwt');
 //const cookieParser = require('cookie-parser')
 const cors = require('cors');
 const express = require('express');
@@ -40,7 +40,7 @@ const jwtSecret = process.env.JWT_SECRET;
 app.use(router);
 
 /* JSON WEB TOKEN */
-app.use(jwt({ secret: jwtSecret, algorithms: ['HS256'] }));
+//app.use(jwt({ secret: jwtSecret, algorithms: ['HS256'] }));
 
 // app.use(
 //   jwt({
