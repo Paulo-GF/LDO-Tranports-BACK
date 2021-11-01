@@ -8,7 +8,7 @@ const authorizationMiddleware = require('./middleware/authorizationMiddleware');
 
 // Router - Admin Connection
 router.post('/admin-signin', adminController.adminSignin);
-router.post('/admin-logged/:userFirstName', authorizationMiddleware, adminController.modifyPassword);
+router.post('/admin-logged', authorizationMiddleware, adminController.modifyPassword);
 
 // Router - Jobs API
 router.get('/recrutement', jobController.getAllJobs);
