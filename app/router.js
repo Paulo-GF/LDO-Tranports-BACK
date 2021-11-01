@@ -8,7 +8,12 @@ const authorizationMiddleware = require('./middleware/authorizationMiddleware');
 
 // Router - Admin Connection
 router.post('/admin-signin', adminController.adminSignin);
-router.post('/admin-logged', authorizationMiddleware, adminController.modifyPassword);
+router.patch('/admin-logged', authorizationMiddleware, adminController.modifyPassword);
+
+// patch ok
+// Patch sans middleware ok
+// Route get  avec middleware ok
+// pb : middleware avec une route patch ou post
 
 // Router - Jobs API
 router.get('/recrutement', jobController.getAllJobs);
