@@ -12,9 +12,9 @@ router.post('/admin-logged/:adminId', authorizationMiddleware, adminController.m
 
 // Router - Jobs API
 router.get('/recrutement', jobController.getAllJobs);
-router.patch('/recrutement/:jobId', jobController.updateJob);
-router.delete('/recrutement/:jobId', jobController.deleteJob);
-router.post('/recrutement/add-job', jobController.addJob);
+router.patch('/recrutement/:jobId', authorizationMiddleware, jobController.updateJob);
+router.delete('/recrutement/:jobId', authorizationMiddleware, jobController.deleteJob);
+router.post('/recrutement/add-job', authorizationMiddleware, jobController.addJob);
 
 // router.get("/logout", authorizationMiddleware, (_, res) => {
 //     return res

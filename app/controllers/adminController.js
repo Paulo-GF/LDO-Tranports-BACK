@@ -12,7 +12,6 @@ const adminController = {
      * @param {password} req - retrieve the password
      * @param {*} res - send status and json
      * @returns - status 403 if connection isn't allowed
-     * 
      */
     adminSignin: async function (req, res) {
 
