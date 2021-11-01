@@ -82,7 +82,7 @@ const adminController = {
         //console.log(newPassword, newPasswordConfirm);
 
         // Sending information to the model Password, to update db
-        const newPass = new Password(userId, newPassword);
+        let newPass = new Password(userId, newPassword);
         await newPass.save();
 
         res.json(newPass);
