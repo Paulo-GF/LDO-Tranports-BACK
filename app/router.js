@@ -6,15 +6,15 @@ const jobController = require('./controllers/jobController');
 const authorizationMiddleware = require('./middleware/authorizationMiddleware');
 
 
+// Router - Admin Connection
+router.post('/admin-signin', adminController.adminSignin);
+router.post('/admin-logged/:adminId', authorizationMiddleware, adminController.modifyPassword);
+
 // Router - Jobs API
 router.get('/recrutement', jobController.getAllJobs);
 router.patch('/recrutement/:jobId', jobController.updateJob);
 router.delete('/recrutement/:jobId', jobController.deleteJob);
 router.post('/recrutement/add-job', jobController.addJob);
-
-// Router - Admin Connection
-router.post('/admin-signin', adminController.adminSignin);
-router.post('/admin-logged/:adminId', authorizationMiddleware, adminController.modifyPassword);
 
 // router.get("/logout", authorizationMiddleware, (_, res) => {
 //     return res
