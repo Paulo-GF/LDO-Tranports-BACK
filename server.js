@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3500;
 
 //app.use(cookieParser())
 app.use(cors({
-    origin: '*'
+    origin: 'http://localhost:8080'
 }));
 
 app.use((req, res, next) => {

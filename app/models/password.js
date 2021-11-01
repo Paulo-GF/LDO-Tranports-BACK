@@ -17,7 +17,7 @@ class Password {
      * Update password and save hash in db
      * @async
      * @returns {Password} Updated instance
-     * @throws {Error} Problem with request
+     * @throws {Error} There's a problem with the request
      */
     async save() {
         try {

@@ -6,16 +6,11 @@ const jobController = require('./controllers/jobController');
 const authorizationMiddleware = require('./middleware/authorizationMiddleware');
 
 
-// Router - Admin Connection
+// Admin Connection
 router.post('/admin-signin', adminController.adminSignin);
 router.patch('/admin-logged', authorizationMiddleware, adminController.modifyPassword);
 
-// patch ok
-// Patch sans middleware ok
-// Route get  avec middleware ok
-// pb : middleware avec une route patch ou post
-
-// Router - Jobs API
+// Jobs API
 router.get('/recrutement', jobController.getAllJobs);
 router.patch('/recrutement/:jobId', authorizationMiddleware, jobController.updateJob);
 router.delete('/recrutement/:jobId', authorizationMiddleware, jobController.deleteJob);
