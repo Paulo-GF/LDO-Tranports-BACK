@@ -35,12 +35,12 @@ app.use(express.urlencoded({ extended: true }));
 
 const jwtSecret = process.env.JWT_SECRET;
 
-/* JSON WEB TOKEN */
-app.use(jwt({ secret: jwtSecret, algorithms: ['HS256'] }));
 
 /* Router */
 app.use(router);
 
+/* JSON WEB TOKEN */
+app.use(jwt({ secret: jwtSecret, algorithms: ['HS256'] }));
 
 // app.use(
 //   jwt({
