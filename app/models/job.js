@@ -1,7 +1,18 @@
-// const pool = require('../database');
+const pool = require('../database');
 
-// class Job {
+class Job {
 
-// };
 
-// module.exports = Job;
+    static async getAllJobs(){
+        const query = {
+            text:"SELECT * FROM job;",
+            values:[]
+        };
+
+        const result = await pool.query(query);
+
+        return result;
+    }
+};
+
+module.exports = Job;

@@ -37,7 +37,7 @@ const adminController = {
             userRole: user.role
         },
             process.env.JWT_SECRET);
-        //res.cookie('access_token', token, { httpOnly: false });
+        //res.cookie('access_token', token, { httpOnly: true });
 
         // password is ok and mail is ok
         res.json({
