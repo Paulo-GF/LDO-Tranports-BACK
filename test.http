@@ -45,9 +45,23 @@ POST http://localhost:5050/recrutement/add-job
 Content-Type: application/json
 
 {
-    "title": "Chauffeur skateboard",
-    "region": "Occitanie",
-    "city": "Toulouse",
+    "title": "Chauffeur de salle",
+    "region": "Bretagne",
+    "city": "Vannes",
     "type": "CDI",
-    "description": "Cherchons un skateur pro avec des Vans"
+    "description": "Cherchons un chauffeur de salle pour mettre l'ambiance avec de bonnes vannes!"
+}
+
+
+### Route : PATCH - 
+PATCH http://localhost:5050/recrutement/3
+Content-Type: application/json
+
+{
+    "id": 3,
+    "title": "Chauffeur de test",
+    "region": "test",
+    "city": "Vannes",
+    "type": "CDI",
+    "description": "Cherchons un chauffeur de salle pour mettre l'ambiance avec de bonnes vannes!"
 }

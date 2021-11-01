@@ -31,9 +31,18 @@ class Job {
 
         const result = await pool.query(query);
 
-        this.id = result.rows[0].new_job;
-    }
-    
+        this.data = result.rows[0].new_job;
+    };
+
+    async updateJob() {
+        const query = {
+            text: "SELECT edit_job($1)",
+            values: [this]
+        };
+
+        const result = await pool.query(query);
+        this.data = result.rows[0].edit_job;
+    };
 
 };
 

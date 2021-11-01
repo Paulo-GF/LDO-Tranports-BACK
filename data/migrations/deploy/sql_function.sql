@@ -25,19 +25,17 @@ INSERT INTO "job"
 $$ LANGUAGE SQL;
 
 -- PATCH Function : check values for editing job by id
-CREATE FUNCTION "edit_job"(jobInput json) RETURNS job AS $$
+CREATE FUNCTION "edit_job"(json) RETURNS void AS $$
 
     UPDATE "job"
     SET
-        title = jobInput->>'title',
-        region = jobInput->>'region',
-        city = jobInput->>'city',
-        type = jobInput->>'type',
-        description = jobInput->>'description'
+        title = $1->>'title',
+        region = $1->>'region',
+        city = $1->>'city',
+        type = $1->>'type',
+        description = $1->>'description'
     WHERE
-        id = (jobInput->>'id')::int
-    RETURNING *;
-
-$$ LANGUAGE SQL;
+        id = ($1->>'id')::int;
+$$ LANGUAGE SQL STRICT;
 
 COMMIT;
