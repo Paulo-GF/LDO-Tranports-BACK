@@ -53,15 +53,19 @@ Content-Type: application/json
 }
 
 
-### Route : PATCH - 
-PATCH http://localhost:5050/recrutement/3
+### Route : PATCH - One Job
+PATCH http://localhost:5050/recrutement/
 Content-Type: application/json
 
 {
-    "id": 3,
+    "id": 5,
     "title": "Chauffeur de test",
     "region": "test",
     "city": "Vannes",
     "type": "CDI",
     "description": "Cherchons un chauffeur de salle pour mettre l'ambiance avec de bonnes vannes!"
 }
+
+### Route : DELETE - One Job 
+DELETE http://localhost:5050/recrutement/5
+Content-Type: application/json

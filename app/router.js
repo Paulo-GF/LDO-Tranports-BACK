@@ -8,9 +8,9 @@ const authorizationMiddleware = require('./middleware/authorizationMiddleware');
 
 // Router - Jobs API
 router.get('/recrutement', jobController.getAllJobs);
-router.patch('/recrutement/:id', jobController.updateJob);
+router.patch('/recrutement/:jobId', jobController.updateJob);
+router.delete('/recrutement/:jobId', jobController.deleteJob);
 router.post('/recrutement/add-job', jobController.addJob);
-router.delete('/recrutement/:id', jobController.deleteJob);
 
 // Router - Admin Connection
 router.post('/admin-signin', adminController.adminSignin);

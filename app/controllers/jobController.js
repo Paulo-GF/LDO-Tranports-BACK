@@ -11,7 +11,7 @@ const jobController = {
     },
 
     addJob: async function (req, res) {
-        
+
         const job = new Job(req.body);
         await job.addJob();
         res.json(job);
@@ -24,8 +24,13 @@ const jobController = {
         res.json(job);
     },
 
-    deleteJob: async function(req,res) {
-        
+    deleteJob: async function (req, res) {
+        const jobId = Number(req.params.jobId);
+        await Job.deleteJob(jobId);
+
+        res.status(200).json({
+            message: 'Suppression réussie!'
+        });
     }
 };
 
