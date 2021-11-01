@@ -34,3 +34,20 @@ Content-Type: application/json
     "newPassword": "toto",
     "newPasswordConfirm": "toto"
 }
+
+### Route : GET - All Jobs
+GET http://localhost:5050/recrutement
+Content-Type: application/json
+
+
+### Route : POST - One Job
+POST http://localhost:5050/recrutement/add-job
+Content-Type: application/json
+
+{
+    "title": "Chauffeur skateboard",
+    "region": "Occitanie",
+    "city": "Toulouse",
+    "type": "CDI",
+    "description": "Cherchons un skateur pro avec des Vans"
+}

@@ -16,7 +16,7 @@ INSERT INTO "job"
     VALUES
     (
         jobInput->>'title',
-        jobInput->>'event_id',
+        jobInput->>'region',
         jobInput->>'city',
         jobInput->>'type',
         jobInput->>'description'
