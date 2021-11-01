@@ -34,3 +34,38 @@ Content-Type: application/json
     "newPassword": "toto",
     "newPasswordConfirm": "toto"
 }
+
+### Route : GET - All Jobs
+GET http://localhost:5050/recrutement
+Content-Type: application/json
+
+
+### Route : POST - One Job
+POST http://localhost:5050/recrutement/add-job
+Content-Type: application/json
+
+{
+    "title": "Chauffeur de salle",
+    "region": "Bretagne",
+    "city": "Vannes",
+    "type": "CDI",
+    "description": "Cherchons un chauffeur de salle pour mettre l'ambiance avec de bonnes vannes!"
+}
+
+
+### Route : PATCH - One Job
+PATCH http://localhost:5050/recrutement/
+Content-Type: application/json
+
+{
+    "id": 5,
+    "title": "Chauffeur de test",
+    "region": "test",
+    "city": "Vannes",
+    "type": "CDI",
+    "description": "Cherchons un chauffeur de salle pour mettre l'ambiance avec de bonnes vannes!"
+}
+
+### Route : DELETE - One Job 
+DELETE http://localhost:5050/recrutement/5
+Content-Type: application/json

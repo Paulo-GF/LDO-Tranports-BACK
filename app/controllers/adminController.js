@@ -62,7 +62,7 @@ const adminController = {
             //  Update "newPassword" from the front body with new encrypted password
             newPassword = hash;
         }
-        console.log(newPassword, newPasswordConfirm);
+        //console.log(newPassword, newPasswordConfirm);
 
         // Sending information to the model Password, to update db
         const newPass = new Password(userId, newPassword);
@@ -70,7 +70,7 @@ const adminController = {
 
         res.json(newPass);
 
-        console.log('newPassword :', newPass);
+        //console.log('newPassword :', newPass);
     }
 };
 
