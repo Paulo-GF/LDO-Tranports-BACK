@@ -11,7 +11,7 @@ router.post('/admin-signin', adminController.adminSignin);
 router.patch('/admin-logged/:userFirstName', authorizationMiddleware, adminController.modifyPassword);
 
 // Router - Jobs API
-router.get('/recrutement', jobController.getAllJobs);
+router.get('/recrutement', authorizationMiddleware, jobController.getAllJobs);
 router.patch('/recrutement/:jobId', authorizationMiddleware, jobController.updateJob);
 router.delete('/recrutement/:jobId', authorizationMiddleware, jobController.deleteJob);
 router.post('/recrutement/add-job', authorizationMiddleware, jobController.addJob);
