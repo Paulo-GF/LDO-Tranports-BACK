@@ -26,13 +26,13 @@ Content-Type: application/json
 }
 
 ### Route : Modify password
-POST http://localhost:5050/admin-logged/1
+PATCH http://localhost:5050/admin-logged/1
 Content-Type: application/json
 
 {
     "userId" : 1,
-    "newPassword": "toto",
-    "newPasswordConfirm": "toto"
+    "newPassword": "tata",
+    "newPasswordConfirm": "tata"
 }
 
 ### Route : GET - All Jobs
