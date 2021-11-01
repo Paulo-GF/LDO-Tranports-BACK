@@ -1,6 +1,9 @@
-// Middleware for check token from front app
 const jsonwebtoken = require('jsonwebtoken');
-
+/**
+ * JWT Middleware - Vérifiy headers and token : next() -> it's ok
+ * @returns {401} - status unauthorized -> Invalid token
+ * @returns {403} - status Forbidden -> Token required
+ */
 const authorization = (req, res, next) => {
     // Retrieve token from headers
     let token = req.headers['x-access-token'] || req.headers['authorization'];

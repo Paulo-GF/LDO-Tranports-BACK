@@ -35,15 +35,18 @@ class Job {
 
     // Return all jobs
     static async getAllJobs() {
-        const query = {
-            text: "SELECT * FROM job;",
-            values: []
-        };
-
-        const { rows } = await pool.query(query);
-
-        return rows;
+        try {
+            const { rows } = await pool.query(`SELECT * FROM job`);
+            return rows.map(row => new Job(row));
+        } catch (error) {
+            if (error.detail) {
+                throw new Error(error.detail)
+            } else {
+                throw error;
+            }
+        }
     };
+
     static async deleteJob(jobId) {
         try {
             await pool.query(`DELETE FROM "job" WHERE id=$1`, [jobId]);

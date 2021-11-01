@@ -7,11 +7,14 @@ const Password = require('../models/password');
 const adminController = {
 
     /**
-     * Checking if connection is allowed for admin
+     * Checking if connection is allowed for admin - Sign Jwt
+     * @async
      * @param {mail} req - retrieve the mail
      * @param {password} req - retrieve the password
-     * @param {*} res - send status and json
-     * @returns - status 403 if connection isn't allowed
+     * @param {JSON} res - send status and json
+     * @returns {403} - status Forbidden -> mail not ok 
+     * @returns {403} - status Forbidden -> password not ok
+     * @returns {200}- status 200 Sucess -> All ok
      */
     adminSignin: async function (req, res) {
 
@@ -45,7 +48,7 @@ const adminController = {
         //res.cookie('access_token', token, { httpOnly: true });
 
         // password is ok and mail is ok
-        res.json({
+        res.status(200).json({
             message: `Connection de l'utilisateur ${user.firstname} : établie !`,
             userId: user.id,
             userFirstName: user.firstname,

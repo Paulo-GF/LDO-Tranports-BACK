@@ -1,7 +1,12 @@
 const Job = require('../models/job');
 
 const jobController = {
-
+    /**
+     * Asynchronous method to return the list of all jobs
+     * @async
+     * @param {job}
+     * @returns JSON of every job
+     */
     getAllJobs: async function (_, res) {
 
         const jobs = await Job.getAllJobs();
