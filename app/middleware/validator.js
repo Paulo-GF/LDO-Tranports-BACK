@@ -2,7 +2,7 @@ const validatorModule = {
     // example : validatorModule.isCorrect(addJobSchema),
     isCorrect:(schema)=>{
         return (req,res,next)=>{
-            // validate retourne {value,error}, je choisis ici de faire de la destructuration pour ne récupérer que error
+           
             const {error} = schema.validate(req.body);
 
             if(error){
