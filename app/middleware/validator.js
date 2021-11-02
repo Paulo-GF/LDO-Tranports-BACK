@@ -7,7 +7,7 @@ const validatorModule = {
 
             if(error){
                 console.log("cette saisie n'est pas conforme",error);
-                res.status(400).json({});
+                res.status(400).json({message : "cette saisie n'est pas conforme", error: error.detail});
             }
             else{
                 next();
