@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const jwtSecret = process.env.JWT_SECRET;
+//const jwtSecret = process.env.JWT_SECRET;
 
 
 /* Router */
