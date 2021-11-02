@@ -34,6 +34,23 @@ router.patch('/recrutement/:jobId', flush, authorizationMiddleware, validatorMod
 router.delete('/recrutement/:jobId', flush, authorizationMiddleware, jobController.deleteJob);
 router.post('/recrutement/add-job', flush, authorizationMiddleware, validatorModule.isCorrect(addJobSchema),jobController.addJob);
 
+// Contact
+router.post('/contact', contactController.sendMail)
+
+/* Réflexions autour de nodemailer -> Pour la page contact : 
+* Pour envoyer un mail, il nous faut les informations du front (submit d'un form)
+   * mail user
+   * firstname
+   * lastname
+   * objet
+   * pièce jointe
+   * message
+* La route front : GET de la page contact
+* La route back : POST du contact
+* Nodemailer : On récupére les informations et on les envoie par mail
+*/
+
+
 // router.get("/logout", authorizationMiddleware, (_, res) => {
 //     return res
 //         .clearCookie("access_token")
