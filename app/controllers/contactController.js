@@ -16,7 +16,7 @@ const contactController = {
             from: req.body.userMail, // sender address
             to: 'test@gmail.com', // list of receivers
             subject: req.body.subject, // Subject line
-            text: req.body.message
+            text: req.body.message,
             html: '<h1>this is a test mail.</h1>', // plain text body
             attachments: [
                 {
@@ -26,7 +26,6 @@ const contactController = {
                 }
             ]
         };
-        
         transporter.sendMail(mailOptions, function (err, info) {
             if(err)
                 console.log('Error :',err)
