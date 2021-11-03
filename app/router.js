@@ -9,15 +9,16 @@ const client = redis.createClient({
     prefix:process.env.REDIS_PREFIX
 });
 
-const {cache,flush} = cacheService(client,expiration); // 24h cache by default
+const {cache,flush} = cacheService(client,60*60*12); // 12h cache
 
 /* Controllers*/
 const adminController = require('./controllers/adminController');
 const jobController = require('./controllers/jobController');
+const contactController = require('./controllers/contactController');
 
 /* Middleware */
 const authorizationMiddleware = require('./middleware/authorizationMiddleware');
-const validatorModule = require('./middleware/validator')
+const validatorModule = require('./middleware/validator');
 
 
 // Validation schemas

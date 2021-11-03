@@ -69,3 +69,18 @@ Content-Type: application/json
 ### Route : DELETE - One Job 
 DELETE http://localhost:5050/recrutement/5
 Content-Type: application/json
+
+
+
+### Route : POST - Send Mail With Nodemailer 
+POST http://localhost:5050/contact
+Content-Type: application/json
+
+{
+    "userMail":"test@gmail.com",
+    "subject": "je fais un test",
+    "message": "coucou c'est le test",
+    "file": "daibutsudenNara.JPG",
+    "path": "chemin"
+
+}

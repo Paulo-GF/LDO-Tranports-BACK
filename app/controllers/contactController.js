@@ -7,22 +7,27 @@ const contactController = {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'test@gmail.com', // A faire : Créer un mail test
+                user: 'ldonodemailer@gmail.com', // A faire : Créer un mail test
                 pass: process.env.MAIL_PASSWORD
             }
         });
         
         const mailOptions = {
+            //userMail
+            //subject
+            //message
+            //file
             from: req.body.userMail, // sender address
-            to: 'test@gmail.com', // list of receivers
+            to: 'ldonodemailer@gmail.com', // list of receivers
             subject: req.body.subject, // Subject line
-            text: req.body.message,
-            html: '<h1>this is a test mail.</h1>', // plain text body
+            html: req.body.message, // plain text body
             attachments: [
                 {
                     filename: req.body.file,
-                    content: 'test d\'un pdf',
+                    path: req.body.path,
                     //contentType: 'application/pdf'// optional, would be detected from the filename
+
+        
                 }
             ]
         };
