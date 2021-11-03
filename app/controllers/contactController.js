@@ -1,9 +1,12 @@
 const nodemailer = require('nodemailer');
+const { unlink } = require('fs');
+
 
 const contactController = {
-    sendMail: function(req, res){
-       // { userMail, subject, file, message } = req.body;
-
+    sendMail: function (req, res) {
+        console.log('##### BODY',req.body);
+        console.log('##### FILES',req.files);
+        
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
@@ -11,7 +14,7 @@ const contactController = {
                 pass: process.env.MAIL_PASSWORD
             }
         });
-        
+
         const mailOptions = {
             //userMail
             //subject
@@ -23,24 +26,33 @@ const contactController = {
             html: req.body.message, // plain text body
             attachments: [
                 {
-                    filename: req.body.file,
-                    path: req.body.path,
+                    filename: req.files.filename,
+                    path: req.files.path,
                     //contentType: 'application/pdf'// optional, would be detected from the filename
-
-        
                 }
             ]
         };
         transporter.sendMail(mailOptions, function (err, info) {
-            if(err)
-                console.log('Error :',err)
-            else
-                console.log('Email sent : ',info);
+            if (err) {
+                console.log('Error :', err)
+            } else {
+                console.log('Email sent : ', info);
+                unlink(req.files.path, (err) => {
+                    if (err)  throw err;
+                    console.log(`The file ${req.files.path}  was deleted`);
+                });
+            }
         })
     }
 };
 
 module.exports = contactController;
+
+
+// function deleteFileInCurrentDir(file, callback) {
+//     fs.unlink(path.join(__dirname, file), callback);
+//    }
+
 
 // [
 //     {   // utf-8 string as an attachment

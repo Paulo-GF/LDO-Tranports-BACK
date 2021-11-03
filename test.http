@@ -81,6 +81,6 @@ Content-Type: application/json
     "subject": "je fais un test",
     "message": "coucou c'est le test",
     "file": "daibutsudenNara.JPG",
-    "path": "chemin"
+    "path": "/var/www/html/LDO Transports/LDO - Back/images/daibutsudenNara.JPG"
 
 }
