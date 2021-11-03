@@ -22,8 +22,7 @@ const validatorModule = require('./middleware/validator')
 
 // Validation schemas
 const schemaPassword = require('./middleware/schemas/password');
-const { addJobSchema } = require('./middleware/schemas/job');
-const { updateJobSchema } = require('./middleware/schemas/job');
+const schemaJob = require('./middleware/schemas/job');
 
 // Admin Connection
 router.post('/admin-signin', adminController.adminSignin);
@@ -31,9 +30,9 @@ router.patch('/admin-logged', authorizationMiddleware, validatorModule.isCorrect
 
 // Jobs API
 router.get('/recrutement', jobController.getAllJobs); //cache
-router.patch('/recrutement/:jobId', authorizationMiddleware, validatorModule.isCorrect(updateJobSchema), jobController.updateJob); //flush 
+router.patch('/recrutement/:jobId', authorizationMiddleware, validatorModule.isCorrect(schemaJob.updateJobSchema), jobController.updateJob); //flush 
 router.delete('/recrutement/:jobId', authorizationMiddleware, jobController.deleteJob); //flush
-router.post('/recrutement/add-job', authorizationMiddleware, validatorModule.isCorrect(addJobSchema),jobController.addJob); // flush
+router.post('/recrutement/add-job', authorizationMiddleware, validatorModule.isCorrect(schemaJob.addJobSchema),jobController.addJob); // flush
 
 // router.get("/logout", authorizationMiddleware, (_, res) => {
 //     return res
