@@ -6,6 +6,7 @@ const contactController = {
     sendMail: function (req, res) {
         console.log('##### BODY',req.body);
         console.log('##### FILES',req.files);
+        console.log('##### FILE', req.file);
         
         const transporter = nodemailer.createTransport({
             service: 'gmail',
