@@ -22,7 +22,8 @@ const validatorModule = require('./middleware/validator')
 
 // Validation schemas
 const schemaPassword = require('./middleware/schemas/password');
-const {addJobSchema, updateJobSchema} = require('./middleware/schemas/job');
+const { addJobSchema } = require('./middleware/schemas/job');
+const { updateJobSchema } = require('./middleware/schemas/job');
 
 // Admin Connection
 router.post('/admin-signin', adminController.adminSignin);
