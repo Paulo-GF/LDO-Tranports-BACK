@@ -8,12 +8,4 @@ const addJobSchema = Joi.object({
     description : Joi.string().required()
 });
 
-const updateJobSchema = Joi.object({
-    title : Joi.string(),
-    region : Joi.string(),
-    city : Joi.string(),
-    type : Joi.string(),
-    description : Joi.string()
-});
-
-module.exports = addJobSchema, updateJobSchema;
+module.exports = addJobSchema;

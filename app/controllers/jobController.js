@@ -30,6 +30,7 @@ const jobController = {
 
     updateJob: async function (req, res) {
         try {
+            console.log(req.body);
             const job = new Job(req.body);
             await job.updateJob();
             res.json(job);
