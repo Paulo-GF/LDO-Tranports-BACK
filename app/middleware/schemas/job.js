@@ -9,6 +9,7 @@ const addJobSchema = Joi.object({
 });
 
 const updateJobSchema = Joi.object({
+    id : Joi.number().required(),
     title : Joi.string(),
     region : Joi.string(),
     city : Joi.string(),

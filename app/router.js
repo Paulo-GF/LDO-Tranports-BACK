@@ -30,7 +30,7 @@ router.patch('/admin-logged', authorizationMiddleware, validatorModule.isCorrect
 
 // Jobs API
 router.get('/recrutement', jobController.getAllJobs); //cache
-router.patch('/recrutement/:jobId', authorizationMiddleware, jobController.updateJob); //flush validatorModule.isCorrect(updateJobSchema)
+router.patch('/recrutement/:jobId', authorizationMiddleware, validatorModule.isCorrect(updateJobSchema), jobController.updateJob); //flush 
 router.delete('/recrutement/:jobId', authorizationMiddleware, jobController.deleteJob); //flush
 router.post('/recrutement/add-job', authorizationMiddleware, validatorModule.isCorrect(addJobSchema),jobController.addJob); // flush
 
