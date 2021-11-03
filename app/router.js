@@ -14,26 +14,31 @@ const router = new Router();
 /* Controllers*/
 const adminController = require('./controllers/adminController');
 const jobController = require('./controllers/jobController');
+const contactController = require('./controllers/contactController');
 
 /* Middleware */
 const authorizationMiddleware = require('./middleware/authorizationMiddleware');
-const validatorModule = require('./middleware/validator')
+const validatorModule = require('./middleware/validator');
+const uploadFiles = require('./middleware/uploadFiles')
 
 
-// Validation schemas
+/* Validation schemas */
 const schemaPassword = require('./middleware/schemas/password');
 const schemaAddJob = require('./middleware/schemas/addJob');
 const schemaUpdateJob = require('./middleware/schemas/updateJob');
 
-// Admin Connection
+/* Admin Connection */
 router.post('/admin-signin', adminController.adminSignin);
 router.patch('/admin-logged', authorizationMiddleware, validatorModule.isCorrect(schemaPassword), adminController.modifyPassword);
 
-// Jobs API
+/* Jobs */
 router.get('/recrutement', jobController.getAllJobs); //cache
 router.patch('/recrutement/:jobId', authorizationMiddleware, validatorModule.isCorrect(schemaUpdateJob), jobController.updateJob); //flush 
 router.delete('/recrutement/:jobId', authorizationMiddleware, jobController.deleteJob); //flush
 router.post('/recrutement/add-job', authorizationMiddleware, validatorModule.isCorrect(schemaAddJob),jobController.addJob); // flush
+
+/* Contact */
+router.post('/contact', uploadFiles.array("file"), contactController.sendMail)
 
 // router.get("/logout", authorizationMiddleware, (_, res) => {
 //     return res
