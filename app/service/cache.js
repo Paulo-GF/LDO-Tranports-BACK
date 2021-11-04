@@ -7,7 +7,7 @@ const cacheService = (client,expiration = 60*60*24) => { // default 24h
     // save/retrieve data from cache
     const cache = async (req,res,next)=>{
 
-        const result = await getAsync(req.url);
+        const result = await getAsync(req.url); 
 
         if(result){
             res.json(result);
