@@ -19,16 +19,14 @@ const contactController = {
             //subject
             //message
             //file
-            from: req.body.userMail, // sender address
+            from: `"Email:"<${req.body.userMail}>`, // sender address
             to: 'ldonodemailer@gmail.com', // list of receivers
             subject: req.body.subject, // Subject line
-            html: `e-mail : ${req.body.userMail}
-                   message : ${req.body.message}`, // plain text body
+            html: req.body.message, // plain text body
             attachments: [
                 {
                     filename: req.file.filename,
                     path: req.file.path,
-                    //contentType: 'application/pdf'// optional, would be detected from the filename
                 }
             ]
         };
