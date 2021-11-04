@@ -1,12 +1,11 @@
 const nodemailer = require('nodemailer');
 const { unlink } = require('fs');
 
-
 const contactController = {
     sendMail: function (req, res) {
         console.log('##### BODY',req.body);
         console.log('##### FILES',req.file);
-        
+
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
