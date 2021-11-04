@@ -5,6 +5,7 @@ const { unlink } = require('fs');
 const contactController = {
     sendMail: function (req, res) {
         console.log('##### BODY',req.body);
+        console.log('##### BODY',req.body.file);
         console.log('##### FILES',req.files);
         console.log('##### FILE', req.file);
         
