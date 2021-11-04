@@ -5,9 +5,7 @@ const { unlink } = require('fs');
 const contactController = {
     sendMail: function (req, res) {
         console.log('##### BODY',req.body);
-        console.log('##### BODY',req.body.file);
         console.log('##### FILES',req.files);
-        console.log('##### FILE', req.file);
         
         const transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -39,10 +37,10 @@ const contactController = {
                 console.log('Error :', err)
             } else {
                 console.log('Email sent : ', info);
-                unlink(req.files.path, (err) => {
-                    if (err)  throw err;
-                    console.log(`The file ${req.files.path}  was deleted`);
-                });
+                // unlink(req.files.path, (err) => {
+                //     if (err)  throw err;
+                //     console.log(`The file ${req.files.path}  was deleted`);
+                // });
             }
         })
     }
