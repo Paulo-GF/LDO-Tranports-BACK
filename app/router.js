@@ -40,6 +40,9 @@ router.post('/recrutement/add-job', authorizationMiddleware, validatorModule.isC
 /* Contact */
 router.post('/contact', uploadFiles, contactController.sendMail);
 
+/*Upload Files*/
+//router.post('/upload', uploadController.sendAttachment);
+
 // router.get("/logout", authorizationMiddleware, (_, res) => {
 //     return res
 //         .clearCookie("access_token")
