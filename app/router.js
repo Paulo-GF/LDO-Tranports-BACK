@@ -38,7 +38,7 @@ router.delete('/recrutement/:jobId', authorizationMiddleware, jobController.dele
 router.post('/recrutement/add-job', authorizationMiddleware, validatorModule.isCorrect(schemaAddJob),jobController.addJob); // flush
 
 /* Contact */
-router.post('/contact', uploadFiles.array("file"), contactController.sendMail);
+router.post('/contact', uploadFiles.single("file"), contactController.sendMail);
 
 // router.get("/logout", authorizationMiddleware, (_, res) => {
 //     return res

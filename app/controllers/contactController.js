@@ -5,7 +5,7 @@ const { unlink } = require('fs');
 const contactController = {
     sendMail: function (req, res) {
         console.log('##### BODY',req.body);
-        console.log('##### FILES',req.files);
+        console.log('##### FILES',req.file);
         
         const transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -26,8 +26,8 @@ const contactController = {
             html: req.body.message, // plain text body
             attachments: [
                 {
-                    filename: req.files.filename,
-                    path: req.files.path,
+                    filename: req.file.filename,
+                    path: req.file.path,
                     //contentType: 'application/pdf'// optional, would be detected from the filename
                 }
             ]
