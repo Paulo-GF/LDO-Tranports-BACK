@@ -36,10 +36,10 @@ const contactController = {
                 console.log('Error :', err)
             } else {
                 console.log('Email sent : ', info);
-                // unlink(req.files.path, (err) => {
-                //     if (err)  throw err;
-                //     console.log(`The file ${req.files.path}  was deleted`);
-                // });
+                unlink(req.files.path, (err) => {
+                    if (err)  throw err;
+                    console.log(`The file ${req.file.path}  was deleted`);
+                });
             }
         })
     }
