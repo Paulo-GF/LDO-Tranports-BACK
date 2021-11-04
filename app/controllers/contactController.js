@@ -22,7 +22,7 @@ const contactController = {
             from: `"Email:" <${req.body.userMail}>`, // sender address
             to: 'ldonodemailer@gmail.com', // list of receivers
             subject: req.body.subject, // Subject line
-            html: `<h1 style="border: 2px solid gray; border-radius: 9px;"> Email: </h1> <p> ${req.body.userMail} </p> <br> <h1> Message :</h1> ${req.body.message}`, // plain text body
+            html: `<h1 style="color: gray;"> Email: </h1> <p> ${req.body.userMail} </p> <br> <h1> Message :</h1> ${req.body.message}`, // plain text body
             attachments: [
                 {
                     filename: req.file.filename,
