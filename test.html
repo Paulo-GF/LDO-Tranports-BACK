@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ 
+<div style="border: 1px solid black; border-radius: 5px; padding-bottom: 1em;">
+<h1 style="color: rgb(65, 65, 236); text-align: center;">Adresse e-mail expéditrice : </h1> <br>
+<div style="font-size: 1.2em; text-align: center;">${req.body.userMail}</div>
+</div>
+<br>
+<div style="border: 1px solid black; border-radius: 5px; padding-bottom: 1em;">
+<h1 style="color: rgb(65, 65, 236); text-align: center;">Message de Mr/Mme ${firstName} ${lastName}</h1> <br>
+<div style="font-size: 1.2em; text-align: center;">${req.body.message}</div>
+</div>
+</body>
+</html>
