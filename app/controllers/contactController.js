@@ -16,8 +16,9 @@ const contactController = {
         // Gestion des bugs et autres :
             // Récupérer le nom et le prénom
             // Pouvoir envoyer un mail sans pj
+        let mailOptions= {};
         if(!req.file){
-            const mailOptions = {
+            mailOptions = {
                 //userMail
                 //subject
                 //message
@@ -34,7 +35,7 @@ const contactController = {
                 </div>`, // plain text body
             };
         }   else {
-        const mailOptions = {
+        mailOptions = {
             //userMail
             //subject
             //message
