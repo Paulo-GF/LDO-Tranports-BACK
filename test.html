@@ -7,14 +7,39 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- userMail
+        firstName
+        lastName
+        subject -> send by default from front example : {titre}
+        urlOffer
+        message
+        file
+
+        corps du mail : 
+
+        Vous avez reçu une candidature pour le poste de ${req.body.subject}.
+
+        Lien vers l'offre (un lien vers ${req.body.urlOffer})
+
+        Informations du candidat :
+        
+        E-mail : ${req.body.userMail}
+        Nom : ${req.body.firstName}
+        Prénom : ${req.body.lastName}
+        
+        Message : ${req.body.message}
+
+        Vous trouverez le cv en pièce jointe
+
+        https://images.unsplash.com/photo-1476067897447-d0c5df27b5df?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80
+    -->
  
-<div style="border: 1px solid rgb(204, 206, 185); border-radius: 5px; padding-bottom: 1em; background-color: #6e6565; color: white;">
-<h1 style="color: rgb(204, 206, 185); text-align: center;">Adresse e-mail expéditrice : </h1> <br>
-<div style="font-size: 1.2em; text-align: center;">${req.body.userMail}</div>
-<br>
-<h1 style="color: rgb(204, 206, 185); text-align: center;">Message de Mr/Mme ${firstName} ${lastName}</h1> <br>
-<div style="font-size: 1.2em; text-align: center;">${req.body.message}</div>
+<div style="display: flex;">
+    <img src="https://images.unsplash.com/photo-1476067897447-d0c5df27b5df?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80"; style="width:900px; opacity: 0.7; position: absolute;">
+    
+    <p style="color: white; font-size: 1.4em; font-weight: bold; position: relative; z-index: 2;"> Vous avez reçu une candidature pour le poste de <span style="font-weight: bold; background-color: rgba(64, 194, 211, 0.589); border-radius: 10px;">${req.body.subject}</span> </p>
 </div>
+
 </body>
 </html>
 

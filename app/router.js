@@ -15,6 +15,7 @@ const router = new Router();
 const adminController = require('./controllers/adminController');
 const jobController = require('./controllers/jobController');
 const contactController = require('./controllers/contactController');
+const applyController = require('./controllers/applyController');
 
 /* Middleware */
 const authorizationMiddleware = require('./middleware/authorizationMiddleware');
@@ -33,15 +34,14 @@ router.patch('/admin-logged', authorizationMiddleware, validatorModule.isCorrect
 
 /* Jobs */
 router.get('/recrutement', jobController.getAllJobs); //cache
-router.patch('/recrutement/:jobId', authorizationMiddleware, validatorModule.isCorrect(schemaUpdateJob), jobController.updateJob); //flush 
+router.patch('/recrutement/:jobId', authorizationMiddleware, validatorModule.isCorrect(schemaUpdateJob), jobController.updateJob); //flush
+router.post('/recrutement/:jobId', uploadFiles, applyController.sendApply);
 router.delete('/recrutement/:jobId', authorizationMiddleware, jobController.deleteJob); //flush
 router.post('/recrutement/add-job', authorizationMiddleware, validatorModule.isCorrect(schemaAddJob),jobController.addJob); // flush
 
 /* Contact */
 router.post('/contact', uploadFiles, contactController.sendMail);
 
-/*Upload Files*/
-//router.post('/upload', uploadController.sendAttachment);
 
 // router.get("/logout", authorizationMiddleware, (_, res) => {
 //     return res
