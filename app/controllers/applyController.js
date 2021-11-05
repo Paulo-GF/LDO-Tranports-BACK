@@ -36,13 +36,13 @@ const applyController = {
             
             <div style = "color:white; height: 165vh; width: 60vw; font-size: 1.5em;">
                 
-                <div style = " margin: 1em; font-weight: bold; font-size :1.2em; text-decoration: underline; color:white;"> Informations du candidat : </div>
+                <div style = "margin: 1em; font-weight: bold; font-size :1.2em; text-decoration: underline; color:white;"> Informations du candidat : </div>
                 
-                <div style = " margin: 1em; ><span style ="font-weight: bold;">E-mail :     </span> <span style ="font-weight: bold; background-color: rgba(64, 194, 211, 0.589); border-radius: 10px; padding: 5px">${req.body.userMail}</span></div>
-                <div style = " margin: 1em; ><span style ="font-weight: bold;">Nom :        </span> <span style ="font-weight: bold; background-color: rgba(64, 194, 211, 0.589); border-radius: 10px; padding: 5px">${req.body.firstName}</span></div>
-                <div style = " margin: 1em; ><span style ="font-weight: bold;">Prénom :     </span> <span style ="font-weight: bold; background-color: rgba(64, 194, 211, 0.589); border-radius: 10px; padding: 5px">${req.body.lastName}</span></div>
-                <div style = " margin: 1em; ><span style ="font-weight: bold;">Téléphone :  </span> <span style ="font-weight: bold; background-color: rgba(64, 194, 211, 0.589); border-radius: 10px; padding: 5px">${req.body.phone}</span></div> <br>
-                <div style = " margin: 1em; ><span style ="font-weight: bold;">Message : <br> </span> <span style = " margin: 1em;">${req.body.message}</span></div>
+                <div style = "margin: 1em; ><span style ="font-weight: bold;">E-mail :     </span> <span style ="font-weight: bold; background-color: rgba(64, 194, 211, 0.589); border-radius: 10px; padding: 5px">${req.body.userMail}</span></div>
+                <div style = "margin: 1em; ><span style ="font-weight: bold;">Nom :        </span> <span style ="font-weight: bold; background-color: rgba(64, 194, 211, 0.589); border-radius: 10px; padding: 5px">${req.body.firstName}</span></div>
+                <div style = "margin: 1em; ><span style ="font-weight: bold;">Prénom :     </span> <span style ="font-weight: bold; background-color: rgba(64, 194, 211, 0.589); border-radius: 10px; padding: 5px">${req.body.lastName}</span></div>
+                <div style = "margin: 1em; ><span style ="font-weight: bold;">Téléphone :  </span> <span style ="font-weight: bold; background-color: rgba(64, 194, 211, 0.589); border-radius: 10px; padding: 5px">${req.body.phone}</span></div> <br>
+                <div style = "margin: 1em; ><span style ="font-weight: bold;">Message : <br> </span> <span style = " margin: 1em;">${req.body.message}</span></div>
         
                 <div style = "margin: 1em; font-size :1.2em;">Vous trouverez le CV en pièce jointe </div>
             </div>
