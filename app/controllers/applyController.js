@@ -34,7 +34,7 @@ const applyController = {
             
             <div style="margin: 20px;"><a href="${req.body.offerURL}" style="border: 1px solid rgba(64, 194, 211, 0.7); background-color: rgba(64, 194, 211, 0.7); color: white; font-size : 1.4em; font-weight: bold; text-align: center;border-radius: 5px; padding: 15px 5px; width:200px; display: inline-block;">Lien vers l'offre</a></div>
             
-            <div style = "margin-top:10px; color:white; display : flex; align-items: flex-start; flex-flow: wrap column; height: 165vh; width: 60vw; justify-content: space-around; margin-left: 1em; font-size: 1.5em;">
+            <div style = "margin-top:10px; color:white; display : flex; align-items: flex-start; flex-direction: column; height: 165vh; width: 60vw; justify-content: space-around; margin-left: 1em; font-size: 1.5em;">
                 
                 <div style = "font-weight: bold; font-size :1.2em; text-decoration: underline; color:white;"> Informations du candidat : </div>
                 
@@ -42,9 +42,9 @@ const applyController = {
                 <div ><span style ="font-weight: bold;">Nom :        </span> <span style ="font-weight: bold; background-color: rgba(64, 194, 211, 0.589); border-radius: 10px; padding: 5px">${req.body.firstName}</span></div>
                 <div ><span style ="font-weight: bold;">Prénom :     </span> <span style ="font-weight: bold; background-color: rgba(64, 194, 211, 0.589); border-radius: 10px; padding: 5px">${req.body.lastName}</span></div>
                 <div ><span style ="font-weight: bold;">Téléphone :  </span> <span style ="font-weight: bold; background-color: rgba(64, 194, 211, 0.589); border-radius: 10px; padding: 5px">${req.body.phone}</span></div> <br>
-                <div ><span style ="font-weight: bold;">Message : <br> </span> <span style ="font-weight: bold; background-color: rgba(64, 194, 211, 0.589); border-radius: 10px; padding: 5px">${req.body.message}</span></div>
+                <div ><span style ="font-weight: bold;">Message : <br> </span> <span>${req.body.message}</span></div>
         
-                <div style="font-weight: bold; font-size :1.2em;">Vous trouverez le CV en pièce jointe </div>
+                <div style="font-size :1.2em;">Vous trouverez le CV en pièce jointe </div>
             </div>
         </div>`, // plain text body
             attachments: [{
