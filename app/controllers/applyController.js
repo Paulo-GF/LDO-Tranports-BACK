@@ -21,14 +21,14 @@ const applyController = {
             //firstName
             //lastName
             //phone
-            //title -> send by default from front // example : {titre}
+            //offerTitle -> send by default from front // example : {titre}
             //offerURL
             //message
             //file
             from: `"Email:" <${req.body.userMail}>`, // sender address
             to: 'ldonodemailer@gmail.com', // list of receivers
-            subject: req.body.subject, // Subject line
-            html: `${req.body.userMail} <br> ${req.body.firstName} <br> ${req.body.lastName} <br> ${req.body.phone} <br> ${req.body.title} <br> ${req.body.offerURL} <br> ${req.body.message}`, // plain text body
+            subject: req.body.offerTitle, // Subject line
+            html: `${req.body.userMail} <br> ${req.body.firstName} <br> ${req.body.lastName} <br> ${req.body.phone} <br> ${req.body.offerTitle} <br> ${req.body.offerURL} <br> ${req.body.message}`, // plain text body
             attachments: [{
                 filename: req.file.filename,
                 path: req.file.path,
