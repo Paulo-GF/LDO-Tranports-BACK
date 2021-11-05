@@ -9,7 +9,7 @@ const contactController = {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'ldonodemailer@gmail.com', // A faire : Créer un mail test
+                user: 'ldonodemailer@gmail.com',
                 pass: process.env.MAIL_PASSWORD
             }
         });
@@ -18,6 +18,8 @@ const contactController = {
         if (!req.file) {
             mailOptions = {
                 //userMail
+                //firstName
+                //LastName
                 //subject
                 //message
                 //file
@@ -35,10 +37,6 @@ const contactController = {
         } else {
             // Option b : With Attachments
             mailOptions = {
-                //userMail
-                //subject
-                //message
-                //file
                 from: `"Email:" <${req.body.userMail}>`, // sender address
                 to: 'ldonodemailer@gmail.com', // list of receivers
                 subject: req.body.subject, // Subject line
