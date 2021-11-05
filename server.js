@@ -12,11 +12,11 @@ const PORT = process.env.PORT || 3500;
 
 //app.use(cookieParser())
 app.use(cors({
-    origin: 'http://localhost:8080'
+    origin: 'https://ldo-transports.netlify.app/'
 }));
 
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
+    res.header('Access-Control-Allow-Origin', 'https://ldo-transports.netlify.app/');
     res.header('Access-Control-Allow-Credentials', 'true');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, X_Token, Content-Type, Accept, Authorization');
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
