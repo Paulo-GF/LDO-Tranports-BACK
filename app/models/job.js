@@ -41,6 +41,28 @@ class Job {
     };
 
     /**
+     * returns one job from db
+     * @async
+     * @param {jobId} - Get id from jobController
+     * @returns one job
+     * @throws {Error} There is a problem with the request
+     */
+     static async getOneJob(jobId) {
+        try {
+
+            const { rows } = await pool.query(`SELECT * FROM job WHERE id=$1`, [jobId]);
+            return rows[0];
+
+        } catch (error) {
+            if (error.detail) {
+                throw new Error(error.detail)
+            } else {
+                throw error;
+            }
+        }
+    };
+
+    /**
      * Insert a new job (SQL function : new_job)
      * @async
      * @returns job informations (id included)

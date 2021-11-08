@@ -34,6 +34,7 @@ router.patch('/admin-logged', authorizationMiddleware, validatorModule.isCorrect
 
 /* Jobs */
 router.get('/recrutement', jobController.getAllJobs); //cache
+router.get('/recrutement/:jobId', jobController.getOneJob); //cache
 router.patch('/recrutement/:jobId', authorizationMiddleware, validatorModule.isCorrect(schemaUpdateJob), jobController.updateJob); //flush
 router.delete('/recrutement/:jobId', authorizationMiddleware, jobController.deleteJob); //flush
 router.post('/recrutement/add-job', authorizationMiddleware, validatorModule.isCorrect(schemaAddJob),jobController.addJob); // flush

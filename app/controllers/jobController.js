@@ -18,6 +18,18 @@ const jobController = {
         }
     },
 
+    getOneJob: async function (req, res) {
+        try {
+            const jobId = Number(req.params.jobId);
+            const jobs = await Job.getOneJob(jobId);
+            console.log(jobs);
+
+            res.json(jobs);
+        } catch (error) {
+            response.status(500).send(error.message);
+        }
+    },
+
     addJob: async function (req, res) {
         try {
             const job = new Job(req.body);

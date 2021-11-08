@@ -39,6 +39,9 @@ Content-Type: application/json
 GET http://localhost:5050/recrutement
 Content-Type: application/json
 
+### Route : GET - All Jobs
+GET http://localhost:5050/recrutement/2
+Content-Type: application/json
 
 ### Route : POST - One Job
 POST http://localhost:5050/recrutement/add-job
