@@ -1,12 +1,16 @@
 const multer = require('multer');
 
+/**
+ * Store file in "uploads" folder
+ * @param {req.file} - req.file -> object with file informations
+ */
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
+    destination: function (_, _, cb) {
         cb(null, 'uploads/')
     },
 
     // Store the file name
-    filename: function (req, file, cb) {
+    filename: function (_, file, cb) {
         cb(null, file.originalname)
     }
 });

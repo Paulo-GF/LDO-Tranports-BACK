@@ -18,6 +18,12 @@ const jobController = {
         }
     },
 
+    /**
+     * send id of the job to job model
+     * @async
+     * @param {jobId}
+     * @returns JSON of the job selected
+     */
     getOneJob: async function (req, res) {
         try {
             const jobId = Number(req.params.jobId);
@@ -30,6 +36,12 @@ const jobController = {
         }
     },
 
+    /**
+     * send the new job added to job model
+     * @async
+     * @param {job}
+     * @returns JSON of new job added
+     */
     addJob: async function (req, res) {
         try {
             const job = new Job(req.body);
@@ -40,6 +52,12 @@ const jobController = {
         }
     },
 
+    /**
+     * Send modifications to job model
+     * @async
+     * @param {body} - request the body sent by front-end app
+     * @returns JSON of updated job
+     */
     updateJob: async function (req, res) {
         try {
             console.log(req.body);
@@ -51,6 +69,12 @@ const jobController = {
         }
     },
 
+    /**
+     * Returns the delete's job page
+     * @async
+     * @param {jobId}
+     * @returns status 200 : delete message
+     */
     deleteJob: async function (req, res) {
         try {
             const jobId = Number(req.params.jobId);

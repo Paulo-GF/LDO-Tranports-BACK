@@ -31,7 +31,7 @@ const cacheService = (client,expiration = 60*60*24) => { // default 24h
     }
 
     // empty and refresh cache with new data
-    const flush = async (req,res,next)=>{
+    const flush = async (req,_,next)=>{
         // delete key and value of redis
         await delAsync(req.url);
 

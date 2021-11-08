@@ -1,5 +1,6 @@
 const Joi = require('joi');
 
+// Schema description when updating a job
 const updateJobSchema = Joi.object({
     id : Joi.number(),
     title : Joi.string(),

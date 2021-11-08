@@ -1,6 +1,4 @@
 require('dotenv').config();
-//const jwt = require('express-jwt');
-//const cookieParser = require('cookie-parser')
 const cors = require('cors');
 const express = require('express');
 
@@ -10,7 +8,6 @@ const router = require('./app/router');
 
 const PORT = process.env.PORT || 3500;
 
-//app.use(cookieParser())
 app.use(cors({
     origin: ['https://ldo-transports.netlify.app','http://localhost:8080']
 }));
@@ -33,23 +30,8 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//const jwtSecret = process.env.JWT_SECRET;
-
-
 /* Router */
 app.use(router);
-
-/* JSON WEB TOKEN */
-//app.use(jwt({ secret: jwtSecret, algorithms: ['HS256'] }));
-
-// app.use(
-//   jwt({
-//     secret: jwtSecret,
-//     algorithms: ['HS256'],
-//     getToken: req => req.cookies.token
-//   })
-// );
-
 
 /* Serveur connection */
 app.listen(PORT, () => {

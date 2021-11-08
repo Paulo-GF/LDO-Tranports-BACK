@@ -44,7 +44,7 @@ class Job {
      * returns one job from db
      * @async
      * @param {jobId} - Get id from jobController
-     * @returns one job
+     * @returns - one job
      * @throws {Error} There is a problem with the request
      */
      static async getOneJob(jobId) {

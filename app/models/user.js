@@ -15,8 +15,9 @@ class User {
 
     /**
      * Get all user informations for checking admin connection
-     * @param {form} retrieve req.body from adminController 
+     * @param {form} retrieve req.body from adminController
      * @returns - A new instance of User with db informations
+     * @throws {Error} - There's a problem with the request
      */
     static async getUser(mail) {
         try {

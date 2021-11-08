@@ -5,15 +5,20 @@ const contactController = {
     /**
      * Applying page : send notification mail for new job apply
      * @async
-     * @param {userId} req - User id
-     * @param {newPassword} req - new password
-     * @param {newPasswordConfirm} req - new password again
-     * @param {JSON} res - Send back JSON
+     * @param {userMail}
+     * @param {firstName}
+     * @param {lastName}
+     * @param {subject}
+     * @param {message}
+     * @param {file}
+     * @returns {sendMail} - Mail sent
+     * @throws {Error} - status 400 (bad request) : Mail not sent
      */
     sendMail: function (req, res) {
         // console.log('##### BODY', req.body);
         // console.log('##### FILES', req.file);
 
+        // SMTP method using Gmail server to send e-mails
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
@@ -21,8 +26,9 @@ const contactController = {
                 pass: process.env.MAIL_PASSWORD
             }
         });
-        let mailOptions = {};
+        // Options to define mail sending parameters
         // Option a : without Attachments
+        let mailOptions = {};
         if (!req.file) {
             mailOptions = {
                 //userMail
@@ -51,6 +57,7 @@ const contactController = {
             </div>`, // plain text body
             };
         } else {
+            // Options to define mail sending parameters
             // Option b : With Attachments
             mailOptions = {
                 from: `"Email:" <${req.body.userMail}>`, // sender address
@@ -71,9 +78,12 @@ const contactController = {
                 ]
             };
         }
+
+        // Method sendMail of the transporter : send mail with parameters defined before
         transporter.sendMail(mailOptions, function (err, info) {
             if (err) {
                 console.log('Error :', err)
+                res.status(400).json({message : "Echec de l'envoi du mail, erreur : " + err});
             } else {
                 console.log('Email sent : ', info);
                 unlink(req.files.path, (err) => {
