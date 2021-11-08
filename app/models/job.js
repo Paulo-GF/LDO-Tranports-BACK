@@ -117,7 +117,7 @@ class Job {
      * Erases a job from database
      * @static
      * @async
-     * @param {number} jobId 
+     * @param {number} jobId
      * @throws {Error} There's a problem with the request
      */
 
