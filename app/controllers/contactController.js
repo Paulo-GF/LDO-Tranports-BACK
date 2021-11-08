@@ -2,6 +2,14 @@ const nodemailer = require('nodemailer');
 const { unlink } = require('fs');
 
 const contactController = {
+    /**
+     * Applying page : send notification mail for new job apply
+     * @async
+     * @param {userId} req - User id
+     * @param {newPassword} req - new password
+     * @param {newPasswordConfirm} req - new password again
+     * @param {JSON} res - Send back JSON
+     */
     sendMail: function (req, res) {
         // console.log('##### BODY', req.body);
         // console.log('##### FILES', req.file);

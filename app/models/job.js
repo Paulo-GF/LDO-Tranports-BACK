@@ -28,7 +28,7 @@ class Job {
     static async getAllJobs() {
         try {
 
-            const { rows } = await pool.query(`SELECT * FROM job`);
+            const { rows } = await pool.query(`SELECT * FROM job ORDER BY "created_at" DESC`);
             return rows.map(row => new Job(row));
 
         } catch (error) {

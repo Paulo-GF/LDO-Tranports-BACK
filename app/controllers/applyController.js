@@ -4,10 +4,26 @@ const {
 } = require('fs');
 
 const applyController = {
-    sendApply: function (req, res) {
-        console.log('##### BODY', req.body);
-        console.log('##### FILES', req.file);
 
+    /**
+     * Applying page : send notification mail for new job apply
+     * @async
+     * @param {userMail}
+     * @param {firstName}
+     * @param {lastName}
+     * @param {phone}
+     * @param {offerTitle}
+     * @param {offerURL}
+     * @param {message}
+     * @param {file}
+     * @returns {sendMail} - Mail sent
+     * @throws {Error} - status 400 (bad request) : Mail not sent
+     */
+    sendApply: function (req, res) {
+        // console.log('##### BODY', req.body);
+        // console.log('##### FILES', req.file);
+        
+        // SMTP method using Gmail server to send e-mails
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
@@ -15,7 +31,7 @@ const applyController = {
                 pass: process.env.MAIL_PASSWORD
             }
         });
-
+        // Options to define mail sending parameters
         const mailOptions = {
             //userMail
             //firstName
@@ -53,9 +69,11 @@ const applyController = {
             }]
         };
 
+        // Method sendMail of the transporter : send mail with parameters defined before
         transporter.sendMail(mailOptions, function (err, info) {
             if (err) {
                 console.log('Error :', err)
+                res.status(400).json({message : "Echec de l'envoi du mail, erreur : " + err});
             } else {
                 console.log('Email sent : ', info);
                 unlink(req.files.path, (err) => {
