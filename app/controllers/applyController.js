@@ -42,7 +42,7 @@ const applyController = {
                 <div style = "margin: 2em;" ><span style ="font-weight: bold;">Nom :        </span> <span style ="font-weight: bold; background-color: rgba(64, 194, 211, 0.589); border-radius: 10px; padding: 5px">${req.body.firstName}</span></div>
                 <div style = "margin: 2em;" ><span style ="font-weight: bold;">Prénom :     </span> <span style ="font-weight: bold; background-color: rgba(64, 194, 211, 0.589); border-radius: 10px; padding: 5px">${req.body.lastName}</span></div>
                 <div style = "margin: 2em;" ><span style ="font-weight: bold;">Téléphone :  </span> <span style ="font-weight: bold; background-color: rgba(64, 194, 211, 0.589); border-radius: 10px; padding: 5px">${req.body.phone}</span></div> <br>
-                <div style = "margin: 1em;" ><span style ="font-weight: bold;">Message : <br> </span> <span style = "margin: 1em; line-height:2.3em;"">${req.body.message}</span></div>
+                <div style = "margin: 2em;" ><span style ="font-weight: bold;">Message : <br> </span> <span style = "margin: 1em; line-height:2.3em;"">${req.body.message}</span></div>
         
                 <div style = "margin: 2em; font-size:1.2em;">Vous trouverez le CV en pièce jointe </div>
             </div>
