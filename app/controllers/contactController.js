@@ -63,13 +63,21 @@ const contactController = {
                 from: `"Email:" <${req.body.userMail}>`, // sender address
                 to: 'ldonodemailer@gmail.com', // list of receivers
                 subject: req.body.subject, // Subject line
-                html: `<div style="border: 1px solid rgb(204, 206, 185); border-radius: 5px; padding-bottom: 1em; background-color: #6e6565; color: white;">
-                        <h1 style="color: rgb(204, 206, 185); text-align: center;">Adresse e-mail expéditrice : </h1> <br>
-                        <div style="font-size: 1.2em; text-align: center;">${req.body.userMail}</div>
-                        <br>
-                        <h1 style="color: rgb(204, 206, 185); text-align: center;">Message de Mr/Mme ${req.body.firstName} ${req.body.lastName}</h1> <br>
-                        <div style="font-size: 1.2em; text-align: center;">${req.body.message}</div>
-                        </div>`, // plain text body
+                html: `<div style="opacity: 0.9; background-repeat: no-repeat;; background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1744&q=80'); box-sizing: border-box; border-radius: 15px; width: 50vw; height: 80vh;">
+    
+                <div style="color: white; font-size: 1.9em; font-weight: bold; padding: 2em 2em 1em;"> Vous avez reçu une demande de contact à propos de : <span style="font-weight: bold; background-color: rgba(64, 194, 211, 0.589); border-radius: 10px; padding: 5px;">${req.body.subject}</span> </div>
+                
+                <div style = "color:white; height: 165vh; width: 60vw; font-size: 1.5em;">
+                    
+                    <div style = "margin: 2em; font-weight: bold; font-size :1.2em; text-decoration: underline; color:white;"> Informations du contact: </div>
+                    
+                    <div style = "margin: 2em;" ><span style ="font-weight: bold;">E-mail :     </span> <span style ="font-weight: bold; background-color: rgba(64, 194, 211, 0.589); border-radius: 10px; padding: 5px">${req.body.userMail}</span></div>
+                    <div style = "margin: 2em;" ><span style ="font-weight: bold;">Nom :        </span> <span style ="font-weight: bold; background-color: rgba(64, 194, 211, 0.589); border-radius: 10px; padding: 5px">${req.body.firstName}</span></div>
+                    <div style = "margin: 2em;" ><span style ="font-weight: bold;">Prénom :     </span> <span style ="font-weight: bold; background-color: rgba(64, 194, 211, 0.589); border-radius: 10px; padding: 5px">${req.body.lastName}</span></div>
+                    <div style = "margin: 2em;" ><span style ="font-weight: bold;">Message : <br> </span> <span style = "margin: 1em; line-height:2.3em;"">${req.body.message}</span></div>
+            
+                </div>
+            </div>`, // plain text body
                 attachments: [
                     {
                         filename: req.file.filename,
