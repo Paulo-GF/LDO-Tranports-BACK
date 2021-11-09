@@ -25,12 +25,16 @@ const jobController = {
      * @returns JSON of the job selected
      */
     getOneJob: async function (req, res) {
+
         try {
             const jobId = Number(req.params.jobId);
             const jobs = await Job.getOneJob(jobId);
             console.log(jobs);
-
+            if(jobs === undefined) {
+                res.status(404).json(`Cette offre n'existe pas`);
+            } else {
             res.json(jobs);
+            }
         } catch (error) {
             response.status(500).send(error.message);
         }
