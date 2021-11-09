@@ -7,7 +7,7 @@ const sanitizer = (req, res, next) => {
         for (let propName in req.body) {
             // Allow only a super restricted set of tags and attributes
             req.body[propName] = sanitizeHtml(req.body[propName], {
-                allowedTags: ['p', 'ol','ul', 'li', 'h1', 'h2', 'h3', 'strong', 'em', 'u', 'br', 'span'],
+                allowedTags: ['ol','ul', 'li', 'h1', 'h2', 'h3', 'strong', 'em', 'u', 'br', 'span'],
                 allowedAttributes: {
                     'a': ['href']
                 }
