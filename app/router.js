@@ -1,6 +1,5 @@
 const { Router } = require('express');
 const router = new Router();
-const sanitizer = require('./middleware/sanitizer');
 
 /* Redis : Cache management*/
 //const cacheService = require('./service/cache');
@@ -36,9 +35,9 @@ router.patch('/admin-logged', authorizationMiddleware, validatorModule.isCorrect
 /* Jobs */
 router.get('/recrutement', jobController.getAllJobs); //cache
 router.get('/recrutement/:jobId', jobController.getOneJob); //cache
-router.patch('/recrutement/:jobId', authorizationMiddleware, validatorModule.isCorrect(schemaUpdateJob), sanitizer, jobController.updateJob); //flush
+router.patch('/recrutement/:jobId', authorizationMiddleware, validatorModule.isCorrect(schemaUpdateJob), jobController.updateJob); //flush
 router.delete('/recrutement/:jobId', authorizationMiddleware, jobController.deleteJob); //flush
-router.post('/recrutement/add-job', authorizationMiddleware, validatorModule.isCorrect(schemaAddJob), sanitizer, jobController.addJob); // flush
+router.post('/recrutement/add-job', authorizationMiddleware, validatorModule.isCorrect(schemaAddJob), jobController.addJob); // flush
 router.post('/recrutement/:jobId', uploadFiles, applyController.sendApply);
 
 /* Contact */
