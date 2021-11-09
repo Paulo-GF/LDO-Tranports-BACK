@@ -9,7 +9,7 @@ const sanitizer = (req, _, next) => {
           req.body[propName] = sanitizeHtml(req.body[propName], {
               allowedTags: ['p','ol','ul', 'li', 'h1', 'h2', 'h3', 'strong', 'em', 'u', 'br', 'span'],
               allowedAttributes: {
-                  'a': ['href']
+                  'a': ['href', 'rel', 'target']
               }
           });
       }
