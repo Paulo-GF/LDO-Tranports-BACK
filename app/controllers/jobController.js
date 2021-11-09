@@ -28,13 +28,9 @@ const jobController = {
 
         try {
             const jobId = Number(req.params.jobId);
-            if (jobId == NaN) {
-                res.status(404).json(`Cette offre n'existe pas`);
-            }
-
             const jobs = await Job.getOneJob(jobId);
             console.log(jobId);
-            if (jobs === undefined) {
+            if (jobs === undefined || jobId == NaN) {
                 res.status(404).json(`Cette offre n'existe pas`);
             } else {
                 res.json(jobs);
