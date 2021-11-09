@@ -28,12 +28,16 @@ const jobController = {
 
         try {
             const jobId = Number(req.params.jobId);
+            if (jobId == NaN) {
+                res.status(404).json(`Cette offre n'existe pas`);
+            }
+
             const jobs = await Job.getOneJob(jobId);
-            console.log(jobs);
-            if(jobs === undefined || jobId === NaN) {
+            console.log(jobId);
+            if (jobs === undefined) {
                 res.status(404).json(`Cette offre n'existe pas`);
             } else {
-            res.json(jobs);
+                res.json(jobs);
             }
         } catch (error) {
             response.status(500).send(error.message);
