@@ -73,7 +73,7 @@ const applyController = {
         transporter.sendMail(mailOptions, function (err, info) {
             if (err) {
                 console.log('Error :', err)
-                res.status(400).json({message : "Echec de l'envoi du mail, erreur : " + err});
+                res.status(400).json({message : "Echec de l'envoi du mail"});
             } else {
                 console.log('Email sent : ', info);
                 unlink(req.files.path, (err) => {
