@@ -14,7 +14,7 @@ const sanitizer = (req, res, next) => {
             });
         }
     }
-
+}
 next();
 
 module.exports = sanitizer;
