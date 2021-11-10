@@ -73,21 +73,16 @@ const adminController = {
             // If is ok, "newPassword" is encrypted
             const salt = bcrypt.genSaltSync(saltRounds);
             let hash = bcrypt.hashSync(newPassword, salt);
-            // console.log('hash : ', hash);
-            // console.log('#######"');
 
             //  Update "newPassword" from the front body with new encrypted password
             newPassword = hash;
         }
-        //console.log(newPassword, newPasswordConfirm);
 
         // Sending information to the model Password, to update db
         let newPass = new Password(userId, newPassword);
         await newPass.save();
 
         res.json(newPass);
-
-        //console.log('newPassword :', newPass);x
     }
 };
 
