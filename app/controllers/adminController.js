@@ -12,7 +12,7 @@ const adminController = {
      * @param {mail} req - retrieve the mail
      * @param {password} req - retrieve the password
      * @param {JSON} res - send status and json
-     * @returns {403} - status Forbidden -> mail not ok 
+     * @returns {403} - status Forbidden -> mail not ok
      * @returns {403} - status Forbidden -> password not ok
      * @returns {200}- status 200 Sucess -> All ok
      */
