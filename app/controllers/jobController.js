@@ -29,11 +29,11 @@ const jobController = {
         try {
             const jobId = Number(req.params.jobId);
             const jobs = await Job.getOneJob(jobId);
-            console.log(jobs);
-            if(jobs === undefined) {
+            console.log(jobId);
+            if (jobs === undefined || typeof jobId === 'number') {
                 res.status(404).json(`Cette offre n'existe pas`);
             } else {
-            res.json(jobs);
+                res.json(jobs);
             }
         } catch (error) {
             response.status(500).send(error.message);
