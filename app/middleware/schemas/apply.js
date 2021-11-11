@@ -6,7 +6,7 @@ const applySchema = Joi.object({
     userMail : Joi.string().pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/).required(),
     firstName : Joi.string().required(),
     lastName : Joi.string().required(),
-    phone : Joi.string().required(),
+    phone : Joi.number().required(),
     offerTitle : Joi.string(),
     offerURL : Joi.string(),
     message : Joi.string()
