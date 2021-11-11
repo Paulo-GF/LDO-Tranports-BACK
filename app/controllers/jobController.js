@@ -27,7 +27,7 @@ const jobController = {
     getOneJob: async function (req, res) {
 
         try {
-            const jobId = Number(req.params.jobId);
+            const jobId = req.params.jobId;
             const jobs = await Job.getOneJob(jobId);
             console.log(jobId);
             if (jobs === undefined) {
