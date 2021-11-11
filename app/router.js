@@ -27,6 +27,8 @@ const uploadFiles = require('./middleware/uploadFiles')
 const schemaPassword = require('./middleware/schemas/password');
 const schemaAddJob = require('./middleware/schemas/addJob');
 const schemaUpdateJob = require('./middleware/schemas/updateJob');
+const contactSchema = require('./middleware/schemas/contact');
+const applySchema = require('./middleware/schemas/apply');
 
 /* Admin Connection */
 router.post('/admin-signin', adminController.adminSignin);
@@ -38,10 +40,10 @@ router.get('/recrutement/:jobId', jobController.getOneJob); //cache
 router.patch('/recrutement/:jobId', authorizationMiddleware, validatorModule.isCorrect(schemaUpdateJob), jobController.updateJob); //flush
 router.delete('/recrutement/:jobId', authorizationMiddleware, jobController.deleteJob); //flush
 router.post('/recrutement/add-job', authorizationMiddleware, validatorModule.isCorrect(schemaAddJob), jobController.addJob); // flush
-router.post('/recrutement/:jobId', uploadFiles, applyController.sendApply);
+router.post('/recrutement/:jobId', validatorModule.isCorrect(applySchema), uploadFiles, applyController.sendApply);
 
 /* Contact */
-router.post('/contact', uploadFiles, contactController.sendMail);
+router.post('/contact', validatorModule.isCorrect(contactSchema), uploadFiles, contactController.sendMail);
 
 
 // router.get("/logout", authorizationMiddleware, (_, res) => {
