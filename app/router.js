@@ -43,7 +43,7 @@ router.post('/recrutement/add-job', authorizationMiddleware, validatorModule.isC
 router.post('/recrutement/:jobId', validatorModule.isCorrect(applySchema), uploadFiles, applyController.sendApply);
 
 /* Contact */
-router.post('/contact', validatorModule.isCorrect(contactSchema), uploadFiles, contactController.sendMail);
+router.post('/contact', uploadFiles, validatorModule.isCorrect(contactSchema), contactController.sendMail);
 
 
 // router.get("/logout", authorizationMiddleware, (_, res) => {
