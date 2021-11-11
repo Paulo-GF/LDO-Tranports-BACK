@@ -28,7 +28,7 @@ const schemaPassword = require('./middleware/schemas/password');
 const schemaAddJob = require('./middleware/schemas/addJob');
 const schemaUpdateJob = require('./middleware/schemas/updateJob');
 const contactSchema = require('./middleware/schemas/contact');
-const applySchema = require('./middleware/schemas/apply');
+const applySchema = require('./middleware/schemas/Apply');
 
 /* Admin Connection */
 router.post('/admin-signin', adminController.adminSignin);
