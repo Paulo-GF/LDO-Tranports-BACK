@@ -1,3 +1,5 @@
+const { unlink } = require('fs');
+
 const validatorModule = {
     
     /**
@@ -19,6 +21,10 @@ const validatorModule = {
             if(error){
                 console.log("cette saisie n'est pas conforme",error);
                 res.status(400).json({message : "cette saisie n'est pas conforme", error});
+                unlink(req.files.path, (err) => {
+                    if (err) throw err;
+                    console.log(`The file ${req.file.path}  was deleted`);
+                });
             }
             else{
                 next();
