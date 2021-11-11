@@ -3,7 +3,7 @@ const Joi = require('joi');
 // Schema description when someone applied for a job
 const applySchema = Joi.object({
     // Data validator :
-    userMail : Joi.string().required(),
+    userMail : Joi.string().pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/).required(),
     firstName : Joi.string().required(),
     lastName : Joi.string().required(),
     phone : Joi.string().required(),
@@ -13,3 +13,6 @@ const applySchema = Joi.object({
 });
 
 module.exports = applySchema;
+
+
+
