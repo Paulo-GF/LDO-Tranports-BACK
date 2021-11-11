@@ -67,6 +67,7 @@ const jobController = {
             console.log(req.body);
             const job = new Job(req.body);
             await job.updateJob();
+            console.log(job);
             res.json(job);
         } catch (error) {
             response.status(500).send(error.message);
