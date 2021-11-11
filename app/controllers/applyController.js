@@ -44,7 +44,7 @@ const applyController = {
             from: `"Email:" <${req.body.userMail}>`, // sender address
             to: 'ldonodemailer@gmail.com', // list of receivers
             subject: req.body.offerTitle, // Subject line
-            html: `<div style="opacity: 0.9; background-repeat: no-repeat;; background-image: url('https://images.unsplash.com/photo-1476067897447-d0c5df27b5df?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80'); box-sizing: border-box;">
+            html: `<div style="opacity: 0.9; background-repeat: no-repeat; border-radius: 20px; width: 80vw; height: 102vh; background-image: url('https://images.unsplash.com/photo-1476067897447-d0c5df27b5df?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80'); box-sizing: border-box;">
     
             <div style="color: white; font-size: 1.9em; font-weight: bold; padding: 2em 2em 1em;"> Vous avez reçu une candidature pour le poste de <span style="font-weight: bold; background-color: rgba(64, 194, 211, 0.589); border-radius: 10px; padding: 5px;">${req.body.offerTitle}</span> </div>
             
