@@ -68,7 +68,14 @@ const jobController = {
             const job = new Job(req.body);
             await job.updateJob();
             console.log(job);
-            res.json(job);
+            res.json({
+                id: Number(job.id),
+                title: job.title,
+                region: job.region,
+                city: job.city,
+                type: job.type,
+                description: job.description
+            });
         } catch (error) {
             response.status(500).send(error.message);
         }
