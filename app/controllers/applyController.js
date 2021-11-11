@@ -43,6 +43,10 @@ const applyController = {
             //file
             from: `"Email:" <${req.body.userMail}>`, // sender address
             to: 'ldonodemailer@gmail.com', // list of receivers
+            envelope: {
+                from: `"Email:" <${req.body.userMail}>`, // used as MAIL FROM: address for SMTP
+                to: 'ldonodemailer@gmail.com' // used as RCPT TO: address for SMTP
+            },
             subject: req.body.offerTitle, // Subject line
             html: `<div style="opacity: 0.9; background-repeat: no-repeat;; background-image: url('https://images.unsplash.com/photo-1476067897447-d0c5df27b5df?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80'); box-sizing: border-box;">
     
