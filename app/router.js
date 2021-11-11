@@ -40,8 +40,8 @@ router.get('/recrutement/:jobId', jobController.getOneJob); //cache
 router.patch('/recrutement/:jobId', authorizationMiddleware, validatorModule.isCorrect(schemaUpdateJob), jobController.updateJob); //flush
 router.delete('/recrutement/:jobId', authorizationMiddleware, jobController.deleteJob); //flush
 router.post('/recrutement/add-job', authorizationMiddleware, validatorModule.isCorrect(schemaAddJob), jobController.addJob); // flush
-router.post('/recrutement/:jobId', uploadFiles, validatorModule.isCorrect(applySchema), applyController.sendApply);
 
+router.post('/recrutement/:jobId', uploadFiles, validatorModule.isCorrect(applySchema), applyController.sendApply);
 /* Contact */
 router.post('/contact', uploadFiles, validatorModule.isCorrect(contactSchema), contactController.sendMail);
 
