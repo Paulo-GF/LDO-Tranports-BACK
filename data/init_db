@@ -1,0 +1,23 @@
+# restart pg service
+sudo service postgresql restart
+
+# use PG environment variable
+export PGUSER=postgres
+
+# create database
+psql -f create_db.sql
+
+# disable PG environment variable
+unset PGUSER
+
+# setting up sqitch
+cd migrations
+sqitch init ldo --engine pg
+sqitch add init -n "initialization of basic structure"
+sqitch add seeding -n "import data to database"
+sqitch add sql_function -n "insert sql functions to pg"
+
+# deploy sqitch scripts
+bash bash_revert
+bash bash_deploy
+bash bash_verify

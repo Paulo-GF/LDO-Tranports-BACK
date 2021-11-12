@@ -1,0 +1,89 @@
+### Connection route - test mail error
+POST http://localhost:5050/admin-signin
+Content-Type: application/json
+
+{
+    "mail": "toto@gmail.com",
+    "password": "Jesuis-benoit35"
+}
+
+### Connection route - test password error
+POST http://localhost:5050/admin-signin
+Content-Type: application/json
+
+{
+    "mail": "benoit.doe@gmail.com",
+    "password": "Jesuis-toto11"
+}
+
+### Connection route - test OK
+POST http://localhost:5050/admin-signin
+Content-Type: application/json
+
+{
+    "mail": "benoit.doe@gmail.com",
+    "password": "toto"
+}
+
+### Route : Modify password
+PATCH http://localhost:5050/admin-logged/1
+Content-Type: application/json
+
+{
+    "userId" : 1,
+    "newPassword": "tata",
+    "newPasswordConfirm": "tata"
+}
+
+### Route : GET - All Jobs
+GET http://localhost:5050/recrutement
+Content-Type: application/json
+
+### Route : GET - All Jobs
+GET http://localhost:5050/recrutement/2
+Content-Type: application/json
+
+### Route : POST - One Job
+POST http://localhost:5050/recrutement/add-job
+Content-Type: application/json
+
+{
+    "title": "Chauffeur de salle",
+    "region": "Bretagne",
+    "city": "Vannes",
+    "type": "CDI",
+    "description": "Cherchons un chauffeur de salle pour mettre l'ambiance avec de bonnes vannes!"
+}
+
+
+### Route : PATCH - One Job
+PATCH http://localhost:5050/recrutement/
+Content-Type: application/json
+
+{
+    "id": 5,
+    "title": "Chauffeur de test",
+    "region": "test",
+    "city": "Vannes",
+    "type": "CDI",
+    "description": "Cherchons un chauffeur de salle pour mettre l'ambiance avec de bonnes vannes!"
+}
+
+### Route : DELETE - One Job 
+DELETE http://localhost:5050/recrutement/5
+Content-Type: application/json
+
+
+
+### Route : POST - Send Mail With Nodemailer 
+POST http://localhost:5050/contact
+Content-Type: application/json
+
+{
+    "userMail":"test@gmail.com",
+    "subject": "je fais un test",
+    "message": "coucou c'est le test",
+    "file": "daibutsudenNara.JPG",
+    "path": "/var/www/html/LDO Transports/LDO - Back/images/daibutsudenNara.JPG"
+
+}
